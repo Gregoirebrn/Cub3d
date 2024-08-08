@@ -6,7 +6,7 @@
 #    By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 02:20:07 by grebrune          #+#    #+#              #
-#    Updated: 2024/08/02 14:25:34 by grebrune         ###   ########.fr        #
+#    Updated: 2024/08/08 22:01:00 by grebrune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,12 @@
 ########################################################################################################################
 
 SRCS		:=	main.c					\
-				checker.c				\
+				check_file.c			\
 				clear_error.c			\
 				cub_utils.c				\
+				cub_color.c				\
+				cub_map.c				\
+				cub_texture.c			\
 				get_next_line.c			\
 				get_next_line_utils.c	\
 		#		parsing.c				\
@@ -33,7 +36,7 @@ HEAD		:=	cub3d.h			\
 
 HEAD_D		:=	includes/
 
-CFLAGS		:=	cc -Wall -Wextra -Werror
+CFLAGS		:=	cc -Wall -Wextra -Werror -g3
 
 BIN			:=	Moonf
 

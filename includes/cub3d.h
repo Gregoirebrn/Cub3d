@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/08 19:40:25 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/08 22:56:10 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_main
 //	void		*mlx;
 //	void		*win;
 	int			fd;
+	char		*filename;
 	char		**map;
 	char		direction;
 	t_color		*floor;
@@ -54,8 +55,12 @@ void	*ft_calloc(size_t nmemb, size_t size);
 int	ft_atoi(const char *nptr);
 //checker
 int		check_file(char *file, t_main *main);
+//texture
 int		get_texture(t_main *main);
+//color
 int		get_color(t_main *main);
+//map
+int get_map(t_main *main);
 //clear_error
 void	error(char *str);
 void	ft_free(void *data);
