@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:55:58 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/08 18:04:14 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/08 21:48:18 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	check_file(char *file, t_main *main)
 	int i;
 	int fd;
 
-	(void)main;
 	i = 0;
 	if (!file)
 		return (error("Error\nEmpty file descriptor.\n"), 1);
@@ -79,8 +78,25 @@ int	get_texture(t_main *main)
 			continue;
 		}
 		if (gnl && check_texture(gnl, i, main->texture))
-			return (1);
+			return (ft_free(gnl), 1);
 		ft_free(gnl);
+		i++;
+	}
+	return (0);
+}
+
+int	check_line(char *gnl)
+{
+	int i;
+
+	i = 2;
+	while (gnl && gnl[i])
+	{
+		if (!(gnl[i] >= '0' && gnl[i] <= '9')
+		&& gnl[i] != ','
+		&& gnl[i] != ' '
+		&& gnl[i] != '\n')
+			return (1);
 		i++;
 	}
 	return (0);
@@ -93,6 +109,8 @@ int	check_color(char *gnl, t_color *fill)
 
 	filled = 0;
 	i = 0;
+	if (check_line(gnl))
+		return (1);
 	while (gnl && gnl[i])
 	{
 		if (gnl[i] >= '0' && gnl[i] <= '9')
@@ -103,13 +121,14 @@ int	check_color(char *gnl, t_color *fill)
 				fill->g = ft_atoi(&gnl[i]);
 			if (filled == 2)
 				fill->b = ft_atoi(&gnl[i]);
+			while (gnl[i] >= '0' && gnl[i] <= '9')
+				i++;
 			filled++;
 		}
+		i++;
 	}
-	if (fill->b < 0 || fill->g < 0 || fill->r < 0)
-		return (error("Error\nBad rgb.\n"), 1);
-	if (fill->b > 255 || fill->g > 255 || fill->r > 255)
-		return (error("Error\nBad rgb.\n"), 1);
+	if (filled != 3)
+		return (3);
 	return (0);
 }
 
@@ -129,13 +148,19 @@ int get_color(t_main *main)
 			ft_free(gnl);
 			continue;
 		}
-		if (!ft_strncmp(gnl, "F", 1) && i == 0)
-			check_color(gnl, main->floor);
-		if (!ft_strncmp(gnl, "C", 1) && i == 1)
-			texture->so = path_text(gnl);
+		if (!ft_strncmp(gnl, "F", 1) && i == 0 && check_color(gnl, main->floor))
+			return (error("Error\nBad rgb, range [0,255].\n"), ft_free(gnl), 1);
+		if (!ft_strncmp(gnl, "C", 1) && i == 1 && check_color(gnl, main->ceiling))
+			return (error("Error\nBad rgb, range [0,255].\n"), ft_free(gnl), 2);
 		ft_free(gnl);
 		i++;
 	}
+	if (main->floor->b > 255 || main->floor->g > 255 || main->floor->r > 255)
+		return (error("Error\nBad rgb, range [0,255].\n"), 3);
+	if (main->ceiling->b > 255 || main->ceiling->g > 255 || main->ceiling->r > 255)
+		return (error("Error\nBad rgb, range [0,255].\n"), 4);
+//	printf("-r%d-g%d-b%d-\n", main->floor->r, main->floor->g, main->floor->b);
+//	printf("-r%d-g%d-b%d-\n", main->ceiling->r, main->ceiling->g, main->ceiling->b);
 	return (0);
 }
 

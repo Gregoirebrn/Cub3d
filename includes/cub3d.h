@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/08 17:54:44 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/08 19:40:25 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 typedef struct s_color
 {
-	unsigned int	r;
-	unsigned int	g;
-	unsigned int	b;
+	int	r;
+	int	g;
+	int	b;
 }	t_color;
 
 typedef struct s_texture
@@ -51,6 +51,7 @@ int		ft_strcmp(char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
+int	ft_atoi(const char *nptr);
 //checker
 int		check_file(char *file, t_main *main);
 int		get_texture(t_main *main);
