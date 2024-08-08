@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/02 15:10:16 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/08 17:54:44 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 # include <fcntl.h>
 # include "get_next_line.h"
 
-//typedef struct s_color
-//{
-//	unsigned int	r;
-//	unsigned int	g;
-//	unsigned int	b;
-//}	t_color;
-//
+typedef struct s_color
+{
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+}	t_color;
+
 typedef struct s_texture
 {
 	char	*no;
@@ -41,18 +41,23 @@ typedef struct s_main
 	int			fd;
 	char		**map;
 	char		direction;
-//	t_color		*ground;
-//	t_color		*roof;
+	t_color		*floor;
+	t_color		*ceiling;
 	t_texture	*texture;
 }	t_main;
 
 //cub_utils
 int		ft_strcmp(char *s1, const char *s2);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strdup(const char *s);
+void	*ft_calloc(size_t nmemb, size_t size);
 //checker
 int		check_file(char *file, t_main *main);
 int		get_texture(t_main *main);
+int		get_color(t_main *main);
 //clear_error
 void	error(char *str);
+void	ft_free(void *data);
 void	free_all(t_main *main);
 
 #endif
