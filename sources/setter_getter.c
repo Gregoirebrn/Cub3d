@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:36:17 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/09 15:36:36 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/09 15:49:06 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int getter(t_main *main)
 		if (gnl && !ft_strcmp(gnl, "\n"))
 		{
 			ft_free(gnl);
+			gnl = get_next_line(main->fd);
 			continue;
 		}
 		if (setter(main, gnl))
@@ -48,8 +49,8 @@ int getter(t_main *main)
 	}
 	if (!main->texture->no || !main->texture->ea || ! main->texture->so || !main->texture->we)
 		return (error("Error\nBad path to texture.\n"), 1);
-	printf("-r%d-g%d-b%d-\n", main->floor->r, main->floor->g, main->floor->b);
-	printf("-r%d-g%d-b%d-\n", main->ceiling->r, main->ceiling->g, main->ceiling->b);
-	printf("-no%s-ea%s-so%s-we%s-\n",main->texture->no, main->texture->ea, main->texture->so, main->texture->we);
+//	printf("-r%d-g%d-b%d-\n", main->floor->r, main->floor->g, main->floor->b);
+//	printf("-r%d-g%d-b%d-\n", main->ceiling->r, main->ceiling->g, main->ceiling->b);
+//	printf("-no%s-ea%s-so%s-we%s-\n",main->texture->no, main->texture->ea, main->texture->so, main->texture->we);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 22:00:06 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/09 14:44:16 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/09 15:53:40 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,28 @@ int	maplen(t_main *main)
 	return (len + 1);
 }
 
-//int	check_map(t_main *main)
-//{
-//	//check char 0, 1, W, N, E, S
-//}
+int	check_map(char **map)
+{
+	size_t	y;
+	size_t	x;
+
+	x = 0;
+	while (map[x])
+	{
+		y = 0;
+		while (map[x][y])
+		{
+			if (map[x][y] != '0' && map[x][y] != '1' &&
+				map[x][y] != 'N' && map[x][y] != 'E' &&
+				map[x][y] != 'S' && map[x][y] != 'W' &&
+				map[x][y] != ' ' && map[x][y] != '\n')
+				return (error("Error\nWrong item in the map.\n"), 1);
+			y++;
+		}
+		x++;
+	}
+	return (0);
+}
 
 int get_map(t_main *main)
 {
@@ -80,6 +98,11 @@ int get_map(t_main *main)
 		if (!ft_strcmp(gnl, "\n"))
 		{
 			ft_free(gnl);
+			if (i == 0)
+			{
+				gnl = get_next_line(main->fd);
+				continue ;
+			}
 			return (free_all(main), error("Error\nEmpty line in description of map."), exit(1), 1);
 		}
 		main->map[i] = ft_strdup(gnl);
@@ -90,8 +113,8 @@ int get_map(t_main *main)
 		i++;
 	}
 	main->map[i] = NULL;
-//	if (check_map(main))
-//		return (1);
+	if (check_map(main->map))
+		return (1);
 	return (0);
 }
 //		printf("-%s", gnl);

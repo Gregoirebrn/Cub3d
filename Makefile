@@ -6,7 +6,7 @@
 #    By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 02:20:07 by grebrune          #+#    #+#              #
-#    Updated: 2024/08/09 15:33:22 by grebrune         ###   ########.fr        #
+#    Updated: 2024/08/09 15:34:07 by grebrune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS		:=	main.c					\
 				cub_texture.c			\
 				get_next_line.c			\
 				get_next_line_utils.c	\
+				setter_getter.c			\
 		#		parsing.c				\
 		#		cub3d.c					\
 

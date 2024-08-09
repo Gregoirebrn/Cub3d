@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/08 22:56:10 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/09 15:27:03 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,17 @@ int	ft_atoi(const char *nptr);
 //checker
 int		check_file(char *file, t_main *main);
 //texture
-int		get_texture(t_main *main);
+int		path_text(char *gnl, char **fill);
 //color
-int		get_color(t_main *main);
+int	check_color(char *gnl, t_color *fill);
 //map
 int get_map(t_main *main);
 //clear_error
 void	error(char *str);
 void	ft_free(void *data);
 void	free_all(t_main *main);
-
+//setter_getter
 int		getter(t_main *main);
 int		setter(t_main *main, char *gnl);
-int		path_text(char *gnl, char **fill);
 
 #endif

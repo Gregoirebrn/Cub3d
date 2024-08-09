@@ -34,25 +34,3 @@ int	check_border(char **map)
 	}
 	return (0);
 }
-
-int	check_path(char **map)
-{
-	size_t	y;
-	size_t	x;
-
-	x = 0;
-	while (map[x])
-	{
-		y = 0;
-		while (map[x][y])
-		{
-			if (map[x][y] != '0' && map[x][y] != '1' && \
-				map[x][y] != 'N' && map[x][y] != 'E' && \
-				map[x][y] != 'S' && map[x][y] != 'w')
-				return (error("Error\nWrong item in the map.\n"), 1);
-			y++;
-		}
-		x++;
-	}
-	return (0);
-}

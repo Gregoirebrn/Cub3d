@@ -14,9 +14,7 @@
 
 int	malloc_main(t_main *main)
 {
-	main = ft_calloc(sizeof(t_main), 1);
-	if (!main)
-		return (free_all(main), error("Error\nCrash of Malloc.\n"), exit(1), 1);
+
 	main->texture = ft_calloc(sizeof (t_texture), 1);
 	if (!main->texture)
 		return (free_all(main), error("Error\nCrash of Malloc.\n"), exit(1), 1);
@@ -35,7 +33,9 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (error("Error\nWrong number of parameter.\n"), 1);
-	main = NULL;
+	main = ft_calloc(sizeof(t_main), 1);
+	if (!main)
+		return (free_all(main), error("Error\nCrash of Malloc.\n"), exit(1), 1);
 	malloc_main(main);
 	if (check_file(av[1], main))
 		return (free_all(main), 2);
