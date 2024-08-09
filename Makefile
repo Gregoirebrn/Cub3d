@@ -6,7 +6,7 @@
 #    By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 02:20:07 by grebrune          #+#    #+#              #
-#    Updated: 2024/08/08 22:01:00 by grebrune         ###   ########.fr        #
+#    Updated: 2024/08/09 15:33:22 by grebrune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,9 @@ SRCS		:=	main.c					\
 		#		parsing.c				\
 		#		cub3d.c					\
 
-SRCS_D		:=	src/
+SRCS_D		:=	sources/
 
-OBJS_D		:=	objs/
+OBJS_D		:=	objects/
 
 OBJS		=	$(SRCS:%.c=$(OBJS_D)%.o)
 
