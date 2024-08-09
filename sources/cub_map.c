@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 22:00:06 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/08 23:13:31 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/09 14:44:16 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,37 +39,60 @@ int	maplen(t_main *main)
 	int		len;
 
 	len = 0;
+	if (return_to_the_future(main))
+		return (0);
 	gnl = get_next_line(main->fd);
 	while (gnl)
 	{
+		if (!ft_strcmp(gnl, "\n"))
+		{
+			ft_free(gnl);
+			gnl = get_next_line(main->fd);
+			continue;
+		}
+//		printf("-%s", gnl);
 		ft_free(gnl);
 		gnl = get_next_line(main->fd);
 		len++;
 	}
 	if (return_to_the_future(main))
 		return (0);
-	return (len);
+	return (len + 1);
 }
+
+//int	check_map(t_main *main)
+//{
+//	//check char 0, 1, W, N, E, S
+//}
 
 int get_map(t_main *main)
 {
 	char	*gnl;
 	int		i;
-	int		len;
 
 	i = 0;
-	len = maplen(main);
-	printf("maplen =%d-\n", len);
-	main->map = ft_calloc(sizeof(char *), len);
+	main->map = ft_calloc(sizeof(char *), maplen(main));
+	if (!main->map)
+		return (free_all(main), error("Error\nCrash of Malloc."), exit(1), 1);
 	gnl = get_next_line(main->fd);
 	while (gnl)
 	{
-		printf("-%s", gnl);
+		if (!ft_strcmp(gnl, "\n"))
+		{
+			ft_free(gnl);
+			return (free_all(main), error("Error\nEmpty line in description of map."), exit(1), 1);
+		}
 		main->map[i] = ft_strdup(gnl);
-//		printf("-%s-", main->map[i]);
+		if (!main->map[i])
+			return (free_all(main), ft_free(gnl), error("Error\nCrash of Malloc."), exit(1), 1);
 		ft_free(gnl);
 		gnl = get_next_line(main->fd);
 		i++;
 	}
+	main->map[i] = NULL;
+//	if (check_map(main))
+//		return (1);
 	return (0);
 }
+//		printf("-%s", gnl);
+//		printf("-%s-", main->map[i]);

@@ -66,4 +66,8 @@ void	error(char *str);
 void	ft_free(void *data);
 void	free_all(t_main *main);
 
+int		getter(t_main *main);
+int		setter(t_main *main, char *gnl);
+int		path_text(char *gnl, char **fill);
+
 #endif

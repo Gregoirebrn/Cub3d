@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:19 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/09 14:47:06 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/09 14:47:12 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,10 @@ int	main(int ac, char **av)
 	malloc_main(main);
 	if (check_file(av[1], main))
 		return (free_all(main), 2);
-	if (get_texture(main))
+	if (getter(main))
 		return (free_all(main), 3);
-	if (get_color(main))
-		return (free_all(main), 4);
 	if (get_map(main))
-		return (free_all(main), 5);
+		return (free_all(main), 4);
 //	exec(main);
 	return (free_all(main), 0);
 }
