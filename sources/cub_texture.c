@@ -14,7 +14,7 @@
 
 int	path_text(char *gnl, char **fill)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (*fill)

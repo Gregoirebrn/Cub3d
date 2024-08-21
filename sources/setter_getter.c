@@ -6,13 +6,13 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:36:17 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/09 15:49:06 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:45:18 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int setter(t_main *main, char *gnl)
+int	setter(t_main *main, char *gnl)
 {
 	if (!ft_strncmp(gnl, "F", 1) && check_color(gnl, main->floor))
 		return (error("Error\nBad rgb, range [0,255].\n"), 1);
@@ -29,7 +29,7 @@ int setter(t_main *main, char *gnl)
 	return (0);
 }
 
-int getter(t_main *main)
+int	getter(t_main *main)
 {
 	char	*gnl;
 
@@ -40,17 +40,22 @@ int getter(t_main *main)
 		{
 			ft_free(gnl);
 			gnl = get_next_line(main->fd);
-			continue;
+			continue ;
 		}
 		if (setter(main, gnl))
 			return (ft_free(gnl), free_all(main), exit(2), 1);
 		ft_free(gnl);
 		gnl = get_next_line(main->fd);
 	}
-	if (!main->texture->no || !main->texture->ea || ! main->texture->so || !main->texture->we)
+	if (!main->texture->no || !main->texture->ea || \
+		! main->texture->so || !main->texture->we)
 		return (error("Error\nBad path to texture.\n"), 1);
-//	printf("-r%d-g%d-b%d-\n", main->floor->r, main->floor->g, main->floor->b);
-//	printf("-r%d-g%d-b%d-\n", main->ceiling->r, main->ceiling->g, main->ceiling->b);
-//	printf("-no%s-ea%s-so%s-we%s-\n",main->texture->no, main->texture->ea, main->texture->so, main->texture->we);
 	return (0);
 }
+
+//	printf("-r%d-g%d-b%d-\n", main->floor->r,
+//	main->floor->g, main->floor->b);
+//	printf("-r%d-g%d-b%d-\n", main->ceiling->r,
+//	main->ceiling->g, main->ceiling->b);
+//	printf("-no%s-ea%s-so%s-we%s-\n",main->texture->no,
+//	main->texture->ea, main->texture->so, main->texture->we);

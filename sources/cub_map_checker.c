@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:22:36 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/21 16:30:48 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/21 16:57:09 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	check_char(char c, t_main *main, size_t x, size_t y)
 {
 	static int	direction = 0;
 
-	if (c != '0' && c != '1' &&
-		c != 'N' && c != 'E' &&
-		c != 'S' && c != 'W' &&
+	if (c != '0' && c != '1' && \
+		c != 'N' && c != 'E' && \
+		c != 'S' && c != 'W' && \
 		c != ' ' && c != '\n')
 		return (error("Error\nWrong item in the map.\n"), 1);
 	if (c == 'N' || c == 'E' || c == 'S' || c == 'W')
@@ -35,8 +35,8 @@ int	check_char(char c, t_main *main, size_t x, size_t y)
 
 int	map_item(char c)
 {
-	if (c != '0' && c != '1' &&
-		c != 'N' && c != 'E' &&
+	if (c != '0' && c != '1' && \
+		c != 'N' && c != 'E' && \
 		c != 'S' && c != 'W')
 		return (1);
 	return (0);
