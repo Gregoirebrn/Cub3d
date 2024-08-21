@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 21:52:50 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/21 17:38:58 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:42:40 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_line(char *gnl)
 	return (0);
 }
 
-int	check_color_extend(char *gnl, t_color *fill, int *filled, int *i)
+void	check_color_extend(char *gnl, t_color *fill, int *filled, int *i)
 {
 	if (gnl[*i] >= '0' && gnl[*i] <= '9')
 	{

@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:19 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/21 17:36:28 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:48:26 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ int	main(int ac, char **av)
 		return (free_all(main), 1);
 	if (check_file(av[1], main))
 		return (free_all(main), 2);
-	if (getter(main))
-		return (free_all(main), 3);
-	if (get_map(main))
-		return (free_all(main), 4);
-	if (check_map(main->map, main))
-		return (free_all(main), 5);
-	return (free_all(main), 0);
+//	if (getter(main))
+//		return (free_all(main), 3);
+//	if (get_map(main))
+//		return (free_all(main), 4);
+//	if (check_map(main->map, main))
+//		return (free_all(main), 5);
+//	return (free_all(main), 0);
 }
 
 //	exec(main);
