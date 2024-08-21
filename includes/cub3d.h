@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/09 15:27:03 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/20 14:44:31 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ typedef struct s_texture
 	char	*ea;
 }	t_texture;
 
+//typedef struct s_utils
+//{
+//	char		**tmp;
+//	char		direction;
+//	size_t		pos_x;
+//	size_t		pos_y;
+//}	t_utils;
+
 typedef struct s_main
 {
 //	void		*mlx;
@@ -41,10 +49,15 @@ typedef struct s_main
 	int			fd;
 	char		*filename;
 	char		**map;
+	char		**tmp;
 	char		direction;
+	size_t		pos_x;
+	size_t		pos_y;
+	size_t		max_y;
 	t_color		*floor;
 	t_color		*ceiling;
 	t_texture	*texture;
+//	t_utils		*utils;
 }	t_main;
 
 //cub_utils
