@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/20 14:44:31 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/21 16:57:09 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_main
 	int			fd;
 	char		*filename;
 	char		**map;
-	char		**tmp;
 	char		direction;
 	size_t		pos_x;
 	size_t		pos_y;
@@ -81,5 +80,8 @@ void	free_all(t_main *main);
 //setter_getter
 int		getter(t_main *main);
 int		setter(t_main *main, char *gnl);
+//map_checker
+int	check_map(char **map, t_main *main);
+int	maplen(t_main *main);
 
 #endif
