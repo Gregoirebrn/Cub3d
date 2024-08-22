@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:22:40 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/21 17:34:59 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/22 22:38:43 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ int	get_map(t_main *main)
 	int		i;
 
 	i = 0;
+	main->map = ft_calloc(sizeof(char *), maplen(main));
+	if (!main->map)
+		return (error("Error\nCrash of Malloc."), 1);
 	gnl = get_next_line(main->fd);
 	while (gnl)
 	{
@@ -98,6 +101,7 @@ int	get_map(t_main *main)
 			return (error("Error\nEmpty line in description of map."), 1);
 		}
 		main->map[i] = ft_strdup(gnl);
+//		printf("%s", main->map[i]);
 		if (!main->map[i])
 			return (ft_free(gnl), error("Error\nCrash of Malloc."), 1);
 		ft_free(gnl);

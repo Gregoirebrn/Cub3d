@@ -33,11 +33,16 @@ void	free_all(t_main *main)
 {
 	int	i;
 
-	ft_free(main->texture->so);
-	ft_free(main->texture->ea);
-	ft_free(main->texture->we);
-	ft_free(main->texture->no);
-	ft_free(main->texture);
+	if (!main)
+		return ;
+	if (main->texture)
+	{
+		ft_free(main->texture->so);
+		ft_free(main->texture->ea);
+		ft_free(main->texture->we);
+		ft_free(main->texture->no);
+		ft_free(main->texture);
+	}
 	ft_free(main->ceiling);
 	ft_free(main->floor);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:55:58 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/08 21:59:25 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/22 22:33:26 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_file(char *file, t_main *main)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (error("Error\nCan't open file.\n"), 1);
-	if (read(fd, NULL, 0))
+	if (read(fd, NULL, 0) == -1)
 		return (perror(file), close(fd), 3);
 	main->fd = fd;
 	main->filename = file;

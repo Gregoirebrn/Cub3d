@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:22:36 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/21 16:57:09 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/22 22:45:44 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	check_char(char c, t_main *main, size_t x, size_t y)
 		main->direction = c;
 		main->pos_x = x;
 		main->pos_y = y;
+		printf("-dir%d-pos_x%zu-pos_y%zu\n", main->direction, main->pos_x, main->pos_y);
 		direction++;
 		if (direction > 1)
 			return (error("Error\nMultiple direction in the map.\n"), 2);
@@ -67,5 +68,8 @@ int	check_map(char **map, t_main *main)
 		}
 		y++;
 	}
+	if (main->direction != 'N' && main->direction != 'E' && \
+		main->direction != 'S' && main->direction != 'W')
+		return (error("Error\nNone direction found in the map.\n"), 3);
 	return (0);
 }
