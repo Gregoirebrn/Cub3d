@@ -6,15 +6,15 @@
 #    By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 02:20:07 by grebrune          #+#    #+#              #
-#    Updated: 2024/08/21 16:57:09 by grebrune         ###   ########.fr        #
+#    Updated: 2024/08/23 20:47:37 by grebrune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ########################################################################################################################
-#                                                       VARIABLE                                                       #
+#                                                       VARIABLES                                                      #
 ########################################################################################################################
 
-SRCS		:=	main.c					\
+PARS		:=	main.c					\
 				check_file.c			\
 				clear_error.c			\
 				cub_utils.c				\
@@ -24,20 +24,23 @@ SRCS		:=	main.c					\
 				cub_map_checker.c		\
 				cub_texture.c			\
 				get_next_line.c			\
-				get_next_line_utils.c	\
-				setter_getter.c			\
+				get_next_line_utils.c
 
-SRCS_D		:=	sources/
+EXEC		:=	setter_getter.c
+
+PARS_D		:=	sources/parsing/
+
+EXEC_D		:=	sources/executable/
 
 OBJS_D		:=	objects/
 
-OBJS		=	$(SRCS:%.c=$(OBJS_D)%.o)
-
-HEAD		:=	cub3d.h			\
+OBJS		:=	$(addprefix $(OBJS_D), $(PARS:.c=.o)) $(addprefix $(OBJS_D), $(EXEC:.c=.o))
 
 HEAD_D		:=	includes/
 
-CFLAGS		:=	cc -Wall -Wextra -Werror -g3
+HEAD		:=	cub3d.h
+
+CFLAGS		:=	-Wall -Wextra -Werror -g3
 
 BIN			:=	Moonf
 
@@ -48,15 +51,19 @@ BIN			:=	Moonf
 all			:	$(BIN)
 
 $(BIN)		:	$(OBJS_D) $(OBJS)
-				$(CFLAGS) -o $(BIN) $(OBJS)
+				$(CC) $(CFLAGS) -o $(BIN) $(OBJS)
 
-$(OBJS)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD_D)/*.h Makefile
-				$(CFLAGS) -I$(HEAD_D) -c $< -o $@
+$(OBJS_D)%.o: $(PARS_D)%.c $(HEAD_D)$(HEAD)
+				$(CC) $(CFLAGS) -I$(HEAD_D) -c $< -o $@
+
+$(OBJS_D)%.o: $(EXEC_D)%.c $(HEAD_D)$(HEAD)
+				$(CC) $(CFLAGS) -I$(HEAD_D) -c $< -o $@
 
 $(OBJS_D)	:
 				@mkdir -p $(OBJS_D)
+
 ########################################################################################################################
-#                                                        COMMANDS                                                      #
+#                                                       COMMANDS                                                       #
 ########################################################################################################################
 
 clean		:
