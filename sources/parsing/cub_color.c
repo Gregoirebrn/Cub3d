@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 21:52:50 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/21 17:42:40 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/26 16:17:51 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_line(char *gnl)
 {
 	int	i;
 
-	i = 2;
+	i = 1;
 	while (gnl && gnl[i])
 	{
 		if (!(gnl[i] >= '0' && gnl[i] <= '9')
@@ -53,13 +53,16 @@ int	check_color(char *gnl, t_color *fill)
 	filled = 0;
 	i = 0;
 	if (check_line(gnl))
-		return (1);
+		return (error("Error\nWrong format for color X r,g,b in rang [0,255].\n"), 1);
+//	printf("-r%d-g%d-b%d-\n", fill->r, fill->g, fill->b);
+	if (fill->r != 256 || fill->g != 256 || fill->b != 256)
+		return (error("Error\nDouble declaration of a color.\n"), 2);
 	while (gnl && gnl[i])
 	{
 		check_color_extend(gnl, fill, &filled, &i);
 		i++;
 	}
 	if (filled != 3 || (fill->b > 255 || fill->g > 255 || fill->r > 255))
-		return (3);
+		return (error("Error\nBad rgb, range [0,255].\n"), 3);
 	return (0);
 }
