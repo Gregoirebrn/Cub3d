@@ -26,7 +26,7 @@ int	check_char(char c, t_main *main, size_t x, size_t y)
 		main->direction = c;
 		main->pos_x = x;
 		main->pos_y = y;
-		printf("-dir%d-pos_x%zu-pos_y%zu\n", main->direction, main->pos_x, main->pos_y);
+//		printf("-dir%d-pos_x%zu-pos_y%zu\n", main->direction, main->pos_x, main->pos_y);
 		direction++;
 		if (direction > 1)
 			return (error("Error\nMultiple direction in the map.\n"), 2);
