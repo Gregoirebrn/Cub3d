@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:22:40 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/26 17:13:42 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/26 18:59:00 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,20 @@ int	maplen(t_main *main)
 		gnl = get_next_line(fd);
 		len++;
 	}
-	printf("len=%d-\n", len);
-	return (close(fd), len + 1);
+	len -= 6;
+//	printf("len=%d-\n", len);
+	return (close(fd), len);
+}
+
+int	get_map_bis(t_main *main)
+{
+	main->len = maplen(main);
+	if (main->len < 0)
+		return (error("Error\nNo map found.\n"), 1);
+	main->map = ft_calloc(sizeof(char *), main->len + 1);
+	if (!main->map)
+		return (error("Error\nCrash of Malloc.\n"), 1);
+	return (0);
 }
 
 int	get_map(t_main *main)
@@ -44,11 +56,10 @@ int	get_map(t_main *main)
 	char	*gnl;
 	int		i;
 
-	i = 0;
-	main->map = ft_calloc(sizeof(char *), maplen(main));
-	if (!main->map)
-		return (error("Error\nCrash of Malloc."), 1);
+	if (get_map_bis(main))
+		return (1);
 	gnl = get_next_line(main->fd);
+	i = 0;
 	while (gnl)
 	{
 		if (!ft_strcmp(gnl, "\n"))
@@ -66,10 +77,12 @@ int	get_map(t_main *main)
 		if (!main->map[i])
 			return (ft_free(gnl), error("Error\nCrash of Malloc."), 1);
 		ft_free(gnl);
-		gnl = get_next_line(main->fd);
 		i++;
+//	printf("i=%d-\n", i);
+		if (main->len == i)
+			break;
+		gnl = get_next_line(main->fd);
 	}
-	printf("i=%d-\n", i);
 	return (main->map[i] = NULL, 0);
 }
 

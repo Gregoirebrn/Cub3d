@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:19 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/22 22:40:31 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/26 19:39:08 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,23 @@ int	main(int ac, char **av)
 	t_main	*main;
 
 	if (ac != 2)
-		return (error("Error\nWrong number of parameter.\n"), 1);
+		return (error("Error\nWrong number of parameter.\n"), -1);
 	main = ft_calloc(sizeof(t_main), 1);
 	if (!main)
-		return (error("Error\nCrash of Malloc.\n"), 1);
+		return (error("Error\nCrash of Malloc.\n"), -1);
 	if (check_file(av[1], main))
-		return (free_all(main), 2);
+		return (free_all(main), -1);
 	if (malloc_main(main))
-		return (free_all(main), 1);
+		return (free_all(main), -2);
 	if (getter(main))
-		return (free_all(main), 3);
+		return (free_all(main), -3);
 	if (get_map(main))
-		return (free_all(main), 4);
+		return (free_all(main), -4);
 	if (check_map(main->map, main))
-		return (free_all(main), 5);
-	return (free_all(main), 0);
+		return (free_all(main), -5);
+	if (exec(main))
+		return (free_all(main), -6);
+	return (free_all(main), 1);
+//	return (free_all(main), 1);
 }
 
-//	exec(main);

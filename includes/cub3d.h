@@ -6,14 +6,14 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/23 20:43:28 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/26 19:40:51 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-//# include "mlx_linux/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
@@ -44,11 +44,12 @@ typedef struct s_texture
 
 typedef struct s_main
 {
-//	void		*mlx;
-//	void		*win;
+	void		*mlx;
+	void		*win;
 	int			fd;
 	char		*filename;
 	char		**map;
+	int			len;
 	char		direction;
 	size_t		pos_x;
 	size_t		pos_y;
@@ -64,24 +65,37 @@ int		ft_strcmp(char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
-int	ft_atoi(const char *nptr);
+int		ft_atoi(const char *nptr);
+
 //checker
 int		check_file(char *file, t_main *main);
+
 //texture
 int		path_text(char *gnl, char **fill);
+
 //color
 int	check_color(char *gnl, t_color *fill);
+
 //map
 int get_map(t_main *main);
+
 //clear_error
 void	error(char *str);
 void	ft_free(void *data);
 void	free_all(t_main *main);
+int	close_win(t_main *main);
+
 //setter_getter
 int		getter(t_main *main);
 int		setter(t_main *main, char *gnl);
+
 //map_checker
-int	check_map(char **map, t_main *main);
-int	maplen(t_main *main);
+int		check_map(char **map, t_main *main);
+int		maplen(t_main *main);
+
+//executable
+int		exec(t_main *main);
+//signal
+int		key_hook(int keycode, t_main *main);
 
 #endif
