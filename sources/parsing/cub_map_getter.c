@@ -6,11 +6,25 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:22:40 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/26 18:59:00 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:22:30 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	only_ws(char *gnl)
+{
+	int	i;
+
+	i = 0;
+	while (gnl && gnl[i])
+	{
+		if (!(gnl[i] >= 7 && gnl[i] <= 13) && gnl[i] != 32)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	maplen(t_main *main)
 {
@@ -25,7 +39,7 @@ int	maplen(t_main *main)
 	gnl = get_next_line(fd);
 	while (gnl)
 	{
-		if (!ft_strcmp(gnl, "\n"))
+		if (!ft_strcmp(gnl, "\n") || only_ws(gnl))
 		{
 			ft_free(gnl);
 			gnl = get_next_line(fd);
@@ -62,7 +76,7 @@ int	get_map(t_main *main)
 	i = 0;
 	while (gnl)
 	{
-		if (!ft_strcmp(gnl, "\n"))
+		if (!ft_strcmp(gnl, "\n") || only_ws(gnl))
 		{
 			ft_free(gnl);
 			if (i == 0)

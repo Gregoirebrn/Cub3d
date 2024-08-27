@@ -21,7 +21,7 @@ int	path_text(char *gnl, char **fill)
 		return (error("Error\nmultiple description of a single texture.\n"), 1);
 	while (gnl && gnl[i])
 	{
-		if (!ft_strncmp(&gnl[i], "./", 2))
+		if (gnl[i] != ' ')
 		{
 			*fill = ft_strdup(&gnl[i]);
 			if (!*fill)
@@ -30,5 +30,5 @@ int	path_text(char *gnl, char **fill)
 		}
 		i++;
 	}
-	return (error("Error\n./ not found.\n"), 3);
+	return (error("Error\nTexture path not found.\n"), 3);
 }

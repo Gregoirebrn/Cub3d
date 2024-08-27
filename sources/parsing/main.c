@@ -45,8 +45,9 @@ int	main(int ac, char **av)
 		return (free_all(main), -4);
 	if (check_map(main->map, main))
 		return (free_all(main), -5);
-	if (exec(main))
-		return (free_all(main), -6);
-	return (close_win(main), 0);
+//	if (exec(main))
+//		return (free_all(main), -6);
+//	return (close_win(main), 0);
+	return (free_all(main), 0);
 }
 

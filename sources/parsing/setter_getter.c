@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:36:17 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/26 18:30:57 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:00:40 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,34 @@
 
 int	setter(t_main *main, char *gnl)
 {
-	if (!ft_strncmp(gnl, "F", 1) && check_color(gnl, main->floor))
+	if (!ft_strncmp(gnl, "F", 1) && check_color(&gnl[1], main->floor))
 		return (1);
-	if (!ft_strncmp(gnl, "C", 1) && check_color(gnl, main->ceiling))
+	if (!ft_strncmp(gnl, "C", 1) && check_color(&gnl[1], main->ceiling))
 		return (2);
-	if (!ft_strncmp(gnl, "NO", 2) && path_text(gnl, &main->texture->no))
+	if (!ft_strncmp(gnl, "NO", 2) && path_text(&gnl[2], &main->texture->no))
 		return (3);
-	if (!ft_strncmp(gnl, "SO", 2) && path_text(gnl, &main->texture->so))
+	if (!ft_strncmp(gnl, "SO", 2) && path_text(&gnl[2], &main->texture->so))
 		return (4);
-	if (!ft_strncmp(gnl, "WE", 2) && path_text(gnl, &main->texture->we))
+	if (!ft_strncmp(gnl, "WE", 2) && path_text(&gnl[2], &main->texture->we))
 		return (5);
-	if (!ft_strncmp(gnl, "EA", 2) && path_text(gnl, &main->texture->ea))
+	if (!ft_strncmp(gnl, "EA", 2) && path_text(&gnl[2], &main->texture->ea))
 		return (6);
 	return (0);
+}
+
+int	find_char(t_main *main, char *gnl)
+{
+	int	i;
+
+	i = 0;
+	while (gnl && gnl[i])
+	{
+		if (gnl[i] == ' ')
+			i++;
+		else
+			return (setter(main, &gnl[i]));
+	}
+	return (1);
 }
 
 void	init_color(t_main *main)
@@ -62,7 +77,7 @@ int	getter(t_main *main)
 			gnl = get_next_line(main->fd);
 			continue ;
 		}
-		if (setter(main, gnl))
+		if (find_char(main, gnl))
 			return (ft_free(gnl), 1);
 		ft_free(gnl);
 		count++;
