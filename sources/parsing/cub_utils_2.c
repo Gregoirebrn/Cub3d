@@ -25,3 +25,13 @@ int	ft_strcmp(char *s1, const char *s2)
 	}
 	return (0);
 }
+
+size_t	tablen(char **tab)
+{
+	size_t	i;
+
+	i = 0;
+	while (tab && tab[i])
+		i++;
+	return (i);
+}
