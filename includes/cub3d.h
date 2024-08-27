@@ -34,14 +34,6 @@ typedef struct s_texture
 	char	*ea;
 }	t_texture;
 
-//typedef struct s_utils
-//{
-//	char		**tmp;
-//	char		direction;
-//	size_t		pos_x;
-//	size_t		pos_y;
-//}	t_utils;
-
 typedef struct s_main
 {
 	void		*mlx;
@@ -57,7 +49,6 @@ typedef struct s_main
 	t_color		*floor;
 	t_color		*ceiling;
 	t_texture	*texture;
-//	t_utils		*utils;
 }	t_main;
 
 //cub_utils
