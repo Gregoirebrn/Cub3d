@@ -1,0 +1,21 @@
+$> ../cub3D ./assets/maps_test/b_no_path.cub
+(0) ✗ Bad
+-------------------------------------------------------
+$> ../cub3D ./assets/maps_test/b_player_on_edge.cub
+(0) ✗ Bad
+-------------------------------------------------------
+$> ../cub3D ./assets/maps_test/b_really_big_map.cub
+(0) ✗ Bad
+-------------------------------------------------------
+$> ../cub3D ./assets/maps_test/b_textures_dir.cub
+(0) ✗ Bad
+-------------------------------------------------------
+$> ../cub3D ./assets/maps_test/b_textures_forbidden.cub
+(0) ✗ Bad
+-------------------------------------------------------
+$> ../cub3D ./assets/maps_test/b_textures_invalid.cub
+(0) ✗ Bad
+-------------------------------------------------------
+$> ../cub3D ./assets/maps_test/b_textures_not_xpm.cub
+(0) ✗ Bad
+-------------------------------------------------------
