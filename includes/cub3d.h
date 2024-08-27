@@ -66,6 +66,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_atoi(const char *nptr);
+size_t	tablen(char **tab);
 
 //checker
 int		check_file(char *file, t_main *main);
