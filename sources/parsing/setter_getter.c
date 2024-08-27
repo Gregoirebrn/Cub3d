@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:36:17 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/27 15:00:40 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/27 17:33:46 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	getter(t_main *main)
 	}
 //	printf("-r%d-g%d-b%d-\n", main->floor->r, main->floor->g, main->floor->b);
 //	printf("-r%d-g%d-b%d-\n", main->ceiling->r, main->ceiling->g, main->ceiling->b);
-//	printf("-no%s-ea%s-so%s-we%s-\n",main->texture->no, main->texture->ea, main->texture->so, main->texture->we);
+//	printf("-no=%s-ea=%s-so=%s-we=%s",main->texture->no, main->texture->ea, main->texture->so, main->texture->we);
 	if (!main->texture->no || !main->texture->ea || \
 		! main->texture->so || !main->texture->we)
 		return (error("Error\nBad path to texture.\n"), 2);

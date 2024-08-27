@@ -6,11 +6,29 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:22:36 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/27 17:20:44 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/27 17:45:05 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	map_item(char c)
+{
+	if (c != '0' && c != '1' && \
+		c != 'N' && c != 'E' && \
+		c != 'S' && c != 'W')
+		return (1);
+	return (0);
+}
+
+int	check_player(char **map, size_t x, size_t y)
+{
+	if ((x == 0 || map_item(map[y][x - 1])) || (y == 0 || map_item(map[y - 1][x])))
+		return (1);
+	if ((ft_strlen(map[y]) < x || map_item(map[y][x + 1])) || (tablen(map) == y + 1 || map_item(map[y + 1][x])))
+		return (2);
+	return (0);
+}
 
 int	check_char(char c, t_main *main, size_t x, size_t y)
 {
@@ -30,16 +48,9 @@ int	check_char(char c, t_main *main, size_t x, size_t y)
 		direction++;
 		if (direction > 1)
 			return (error("Error\nMultiple direction in the map.\n"), 2);
+		if (check_player(main->map, x, y))
+			return (error("Error\nPlayer can't identify as a wall.\n"), 2);
 	}
-	return (0);
-}
-
-int	map_item(char c)
-{
-	if (c != '0' && c != '1' && \
-		c != 'N' && c != 'E' && \
-		c != 'S' && c != 'W')
-		return (1);
 	return (0);
 }
 
