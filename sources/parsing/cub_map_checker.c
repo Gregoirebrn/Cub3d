@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:22:36 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/22 22:45:44 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/27 17:20:44 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ int	check_map(char **map, t_main *main)
 		x = 0;
 		while (map[y][x])
 		{
+//			printf("max size str %zu-\n", ft_strlen(map[y]));
+//			printf("----y=%zu---x=%zu-----\n", y, x);
 			if (check_char(map[y][x], main, x, y))
 				return (1);
-			if (map[y][x] == '0' && x != 0 && map_item(map[y][x - 1]))
+			if ((map[y][x] == '0' && (x == 0 || map_item(map[y][x - 1]))) || \
+				(map[y][x] == '0' && (y == 0 || map_item(map[y - 1][x]))))
 				return (error("Error\nThe map is not closed!\n"), 2);
-			if (map[y][x] == '0' && y != 0 && map_item(map[y - 1][x]))
-				return (error("Error\nThe map is not closed!\n"), 2);
-			if (map[y][x] == '0' && map[y][x + 1] && map_item(map[y][x + 1]))
-				return (error("Error\nThe map is not closed!\n"), 2);
-			if (map[y][x] == '0' && map[y + 1][x] && map_item(map[y + 1][x]))
+			if ((map[y][x] == '0' && (ft_strlen(map[y]) < x || map_item(map[y][x + 1]))) || \
+				(map[y][x] == '0' && (tablen(map) == y + 1 || map_item(map[y + 1][x]))))
 				return (error("Error\nThe map is not closed!\n"), 2);
 			x++;
 		}

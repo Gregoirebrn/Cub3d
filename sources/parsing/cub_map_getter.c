@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:22:40 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/27 15:22:30 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:23:04 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ int	get_map(t_main *main)
 				gnl = get_next_line(main->fd);
 				continue ;
 			}
-			return (error("Error\nEmpty line in description of map."), 1);
+			return (error("Error\nEmpty line in description of map.\n"), 1);
 		}
 		main->map[i] = ft_strdup(gnl);
 //		printf("%s", main->map[i]);
 		if (!main->map[i])
-			return (ft_free(gnl), error("Error\nCrash of Malloc."), 1);
+			return (ft_free(gnl), error("Error\nCrash of Malloc.\n"), 1);
 		ft_free(gnl);
 		i++;
 //	printf("i=%d-\n", i);
