@@ -7,7 +7,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:52:45 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/26 19:44:28 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/27 14:46:54 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,16 @@ void	free_all(t_main *main)
 	while (main->map && main->map[i])
 		ft_free(main->map[i++]);
 	ft_free(main->map);
-//	mlx_destroy_window(main->mlx, main->win);
-//	mlx_destroy_display(main->mlx);
-	ft_free(main->mlx);
 	ft_free(main);
 	exit (0);
 }
 
 int	close_win(t_main *main)
 {
+	mlx_destroy_window(main->mlx, main->win);
+	mlx_destroy_display(main->mlx);
+	ft_free(main->mlx);
 	free_all(main);
+//	(void)main;
 	return (0);
 }

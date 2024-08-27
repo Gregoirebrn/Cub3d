@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:19 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/26 19:39:08 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/08/27 14:49:45 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	main(int ac, char **av)
 		return (free_all(main), -5);
 	if (exec(main))
 		return (free_all(main), -6);
-	return (free_all(main), 1);
-//	return (free_all(main), 1);
+	return (close_win(main), 0);
 }
 
