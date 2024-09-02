@@ -25,10 +25,11 @@ PARS		:=	main.c					\
 				cub_texture.c			\
 				get_next_line.c			\
 				get_next_line_utils.c	\
-				setter_getter.c			\
+				setter_getter.c
 
 EXEC		:=	cub3d.c					\
 				signal.c				\
+				raycaster.c
 
 PARS_D		:=	sources/parsing/
 

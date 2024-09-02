@@ -26,12 +26,12 @@ void	bg_gen(t_main *main)
 	int j;
 
 	i = 0;
-	while (i < 1080)
+	while (i < HEIGHT)
 	{
 		j = 0;
-		while (j < 1920)
+		while (j < WIDTH)
 		{
-			if (i < 540)
+			if (i < HEIGHT / 2)
 				img_pix_put(&main->img, j, i, 0xff0000ff);
 			else
 				img_pix_put(&main->img, j, i, 0xffff0000);
@@ -52,8 +52,8 @@ int	exec(t_main *main)
 	main->mlx = mlx_init();
 	if (!main->mlx)
 		return (error("Error\nThe mlx has crash.\n"), 1);
-	main->win = mlx_new_window(main->mlx, 1920, 1080, "CUB3D");
-	main->img.mlx_img = mlx_new_image(main->mlx, 1920, 1080);
+	main->win = mlx_new_window(main->mlx, WIDTH, HEIGHT, "CUB3D");
+	main->img.mlx_img = mlx_new_image(main->mlx, WIDTH, HEIGHT);
 	main->img.addr = mlx_get_data_addr(main->img.mlx_img, &main->img.bpp, &main->img.line_len, &main->img.endian);
 	map_gen(main);
 	mlx_hook(main->win, 2, 1L << 0, key_hook, main);
