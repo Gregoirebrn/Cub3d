@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/02 11:58:30 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/02 16:38:18 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@
 # define FOV 60
 # define TILE 30
 
-typedef struct s_player
+typedef struct s_plyr
 {
-	int		plyr_x;
-	int		plyr_y;
+	int		p_x;
+	int		p_y;
 	double	angle;
 	float	fov_rd;
 	int		rot;
 	int		l_r;
 	int		u_d;
-}	t_player;
+}	t_plyr;
 
 typedef struct s_ray //the ray structure
 {
@@ -73,7 +73,7 @@ typedef struct s_main
 	void		*win;
 	t_img		img;
 	t_ray		*ray;
-	t_player	*player;
+	t_plyr		*plyr;
 	int			fd;
 	char		*filename;
 	char		**map;
@@ -81,7 +81,8 @@ typedef struct s_main
 	char		direction;
 	size_t		pos_x;
 	size_t		pos_y;
-	size_t		max_y; //?
+	size_t		map_h;
+	size_t		map_w;
 	t_color		*floor;
 	t_color		*ceiling;
 	t_texture	*texture;
