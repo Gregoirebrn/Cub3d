@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/26 19:40:51 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:14:25 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_atoi(const char *nptr);
 size_t	tablen(char **tab);
+int		getter_end(t_main *main);
 
 //checker
 int		check_file(char *file, t_main *main);
@@ -69,7 +70,8 @@ int		path_text(char *gnl, char **fill);
 int	check_color(char *gnl, t_color *fill);
 
 //map
-int get_map(t_main *main);
+int	get_map_bis(t_main *main);
+int	get_map(t_main *main);
 
 //clear_error
 void	error(char *str);

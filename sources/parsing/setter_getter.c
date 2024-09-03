@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:36:17 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/27 17:33:46 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:03:23 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int	getter(t_main *main)
 	count = 0;
 	while (gnl)
 	{
-//		printf("%s", gnl);
 		if (gnl && !ft_strcmp(gnl, "\n"))
 		{
 			ft_free(gnl);
@@ -82,19 +81,19 @@ int	getter(t_main *main)
 		ft_free(gnl);
 		count++;
 		if (count == 6)
-			break;
+			break ;
 		gnl = get_next_line(main->fd);
 	}
-//	printf("-r%d-g%d-b%d-\n", main->floor->r, main->floor->g, main->floor->b);
-//	printf("-r%d-g%d-b%d-\n", main->ceiling->r, main->ceiling->g, main->ceiling->b);
-//	printf("-no=%s-ea=%s-so=%s-we=%s",main->texture->no, main->texture->ea, main->texture->so, main->texture->we);
-	if (!main->texture->no || !main->texture->ea || \
-		! main->texture->so || !main->texture->we)
-		return (error("Error\nBad path to texture.\n"), 2);
-	if ((main->floor->b > 255 || main->floor->g > 255 || main->floor->r > 255) || \
-		(main->ceiling->b > 255 || main->ceiling->g > 255 || main->ceiling->r > 255))
-		return (error("Error\nA color was not found.\n"), 3);
-//	printf("-----------------------------\n");
+	if (getter_end(main))
+		return (2);
 	return (0);
 }
 
+//		printf("%s", gnl);
+//	printf("-r%d-g%d-b%d-\n", main->floor->r,
+//	main->floor->g, main->floor->b);
+//	printf("-r%d-g%d-b%d-\n", main->ceiling->r,
+//	main->ceiling->g, main->ceiling->b);
+//	printf("-no=%s-ea=%s-so=%s-we=%s",main->texture->no
+//	, main->texture->ea, main->texture->so, main->texture->we);
+//	printf("-----------------------------\n");
