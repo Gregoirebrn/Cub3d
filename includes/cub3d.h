@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/03 12:02:13 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/03 15:03:17 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define HEIGHT 1080
 # define FOV 60
 # define TILE 30
+# define MOVE_SPEED 2
+# define ROT_SPEED 3
 
 typedef struct s_plyr
 {
@@ -156,5 +158,13 @@ void	draw_bg(t_main *main, int ray, int t_pix, int b_pix);
 // raycaster
 
 void	raycaster(t_main *main);
+
+// move
+
+void	move_f(t_main *main);
+void	move_b(t_main *main);
+void	move_l(t_main *main);
+void	move_r(t_main *main);
+void	rotate(t_main *main, int sign);
 
 #endif

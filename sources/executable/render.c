@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:57:40 by beroy             #+#    #+#             */
-/*   Updated: 2024/09/03 12:14:09 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/03 13:48:22 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	draw_wall(t_main *main, int ray, int t_pix, int b_pix)
 	int	i;
 
 	color = get_color(main, main->ray->flag);
-	printf("color : %d\n", color);
 	i = t_pix;
 	while (i < b_pix)
 	{

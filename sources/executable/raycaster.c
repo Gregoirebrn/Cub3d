@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:34:46 by beroy             #+#    #+#             */
-/*   Updated: 2024/09/03 13:20:40 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/03 13:21:37 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ void	raycaster(t_main *main)
 		main->ray->flag = 0;
 		h_inter = get_h_inter(main, main->ray->ray_ngl);
 		v_inter = get_v_inter(main, main->ray->ray_ngl);
-		printf("h: %f || v: %f\n", h_inter, v_inter);
 		if (v_inter <= h_inter)
 			main->ray->distance = v_inter;
 		else
