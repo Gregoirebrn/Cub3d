@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_map_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:22:36 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/27 17:45:05 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/09/03 13:20:40 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,11 @@ int	check_map(char **map, t_main *main)
 				return (error("Error\nThe map is not closed!\n"), 2);
 			x++;
 		}
+		if ((int)x > main->map_w)
+			main->map_w = (int)x;
 		y++;
 	}
+	main->map_h = (int)y;
 	if (main->direction != 'N' && main->direction != 'E' && \
 		main->direction != 'S' && main->direction != 'W')
 		return (error("Error\nNone direction found in the map.\n"), 3);

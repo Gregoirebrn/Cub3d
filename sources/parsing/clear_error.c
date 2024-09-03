@@ -46,6 +46,8 @@ void	free_all(t_main *main)
 	}
 	ft_free(main->ceiling);
 	ft_free(main->floor);
+	ft_free(main->ray);
+	ft_free(main->plyr);
 	i = 0;
 	while (main->map && main->map[i])
 		ft_free(main->map[i++]);

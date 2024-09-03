@@ -6,17 +6,19 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:34:46 by beroy             #+#    #+#             */
-/*   Updated: 2024/09/02 17:08:04 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/03 13:20:40 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 int	wall_hit(float x, float y, t_main *main)
 {
-	int x_m;
-	int y_m;
+	int	x_m;
+	int	y_m;
 
+	if (x < 0 || y < 0)
+		return (0);
 	x_m = floor(x / TILE);
 	y_m = floor(y / TILE);
 	if ((y_m >= main->map_h) || x_m >= main->map_w)
@@ -27,7 +29,7 @@ int	wall_hit(float x, float y, t_main *main)
 	return (1);
 }
 
-int unit_circle(float angle, char c)
+int	unit_circle(float angle, char c)
 {
 	if (c == 'x')
 	{
@@ -40,10 +42,9 @@ int unit_circle(float angle, char c)
 			return (1);
 	}
 	return (0);
-
 }
 
-int	inter_check(float angle, float *inter, float* step, int horizon)
+int	inter_check(float angle, float *inter, float *step, int horizon)
 {
 	if (horizon == 1)
 	{
@@ -72,14 +73,15 @@ double	get_h_inter(t_main *main, float angle)
 	float	y;
 	float	x_step;
 	float	y_step;
-	int 	pixel;
+	int		pixel;
 
 	x_step = TILE / tan(angle);
 	y_step = TILE;
 	y = floor(main->plyr->p_y / TILE) * TILE;
 	pixel = inter_check(angle, &y, &y_step, 1);
 	x = main->plyr->p_x + (y - main->plyr->p_y) / tan(angle);
-	if ((x_step > 0 && unit_circle(angle, 'y')) || (x_step < 0 && !unit_circle(angle, 'y')))
+	if ((x_step > 0 && unit_circle(angle, 'y'))
+		|| (x_step < 0 && !unit_circle(angle, 'y')))
 		x_step *= -1;
 	while (wall_hit(x, y - pixel, main))
 	{
@@ -95,14 +97,15 @@ double	get_v_inter(t_main *main, float angle)
 	float	y;
 	float	x_step;
 	float	y_step;
-	int 	pixel;
+	int		pixel;
 
 	x_step = TILE;
 	y_step = TILE * tan(angle);
 	x = floor(main->plyr->p_x / TILE) * TILE;
 	pixel = inter_check(angle, &x, &x_step, 0);
 	y = main->plyr->p_y + (x - main->plyr->p_x) * tan(angle);
-	if ((y_step < 0 && unit_circle(angle, 'x')) || (y_step > 0 && !unit_circle(angle, 'x')))
+	if ((y_step < 0 && unit_circle(angle, 'x'))
+		|| (y_step > 0 && !unit_circle(angle, 'x')))
 		y_step *= -1;
 	while (wall_hit(x - pixel, y, main))
 	{
@@ -125,6 +128,7 @@ void	raycaster(t_main *main)
 		main->ray->flag = 0;
 		h_inter = get_h_inter(main, main->ray->ray_ngl);
 		v_inter = get_v_inter(main, main->ray->ray_ngl);
+		printf("h: %f || v: %f\n", h_inter, v_inter);
 		if (v_inter <= h_inter)
 			main->ray->distance = v_inter;
 		else
@@ -132,7 +136,7 @@ void	raycaster(t_main *main)
 			main->ray->distance = h_inter;
 			main->ray->flag = 1;
 		}
-		// rendering should happen here
+		render_ray(main, i);
 		i++;
 		main->ray->ray_ngl += main->plyr->fov_rd / WIDTH;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:19 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/27 14:49:45 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/09/03 12:01:21 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ int	malloc_main(t_main *main)
 		return (error("Error\nCrash of Malloc.\n"), 1);
 	main->ceiling = ft_calloc(sizeof (t_color), 1);
 	if (!main->ceiling)
+		return (error("Error\nCrash of Malloc.\n"), 1);
+	main->ray = ft_calloc(sizeof (t_ray), 1);
+	if (!main->ray)
+		return (error("Error\nCrash of Malloc.\n"), 1);
+	main->plyr = ft_calloc(sizeof (t_plyr), 1);
+	if (!main->plyr)
 		return (error("Error\nCrash of Malloc.\n"), 1);
 	return (0);
 }
@@ -45,6 +51,7 @@ int	main(int ac, char **av)
 		return (free_all(main), -4);
 	if (check_map(main->map, main))
 		return (free_all(main), -5);
+	init_player(main);
 	if (exec(main))
 		return (free_all(main), -6);
 	return (close_win(main), 0);

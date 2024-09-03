@@ -6,46 +6,11 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:58:32 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/28 15:50:35 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/03 11:49:37 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	img_pix_put(t_img *img, int x, int y, int color)
-{
-	char    *pixel;
-
-	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*(int *)pixel = color;
-}
-
-void	bg_gen(t_main *main)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < HEIGHT)
-	{
-		j = 0;
-		while (j < WIDTH)
-		{
-			if (i < HEIGHT / 2)
-				img_pix_put(&main->img, j, i, 0xff0000ff);
-			else
-				img_pix_put(&main->img, j, i, 0xffff0000);
-			j++;
-		}
-		i++;
-	}
-}
-
-void	map_gen(t_main *main)
-{
-	bg_gen(main);
-	mlx_put_image_to_window(main->mlx, main->win, main->img.mlx_img, 0, 0);
-}
 
 int	exec(t_main *main)
 {
@@ -55,7 +20,8 @@ int	exec(t_main *main)
 	main->win = mlx_new_window(main->mlx, WIDTH, HEIGHT, "CUB3D");
 	main->img.mlx_img = mlx_new_image(main->mlx, WIDTH, HEIGHT);
 	main->img.addr = mlx_get_data_addr(main->img.mlx_img, &main->img.bpp, &main->img.line_len, &main->img.endian);
-	map_gen(main);
+	raycaster(main);
+	mlx_put_image_to_window(main->mlx, main->win, main->img.mlx_img, 0, 0);
 	mlx_hook(main->win, 2, 1L << 0, key_hook, main);
 	mlx_hook(main->win, 17, 0, close_win, main);
 	mlx_loop(main->mlx);

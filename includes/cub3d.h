@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/02 16:38:18 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/03 12:02:13 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ typedef struct s_main
 	char		direction;
 	size_t		pos_x;
 	size_t		pos_y;
-	size_t		map_h;
-	size_t		map_w;
+	int 		map_h;
+	int 		map_w;
 	t_color		*floor;
 	t_color		*ceiling;
 	t_texture	*texture;
@@ -90,12 +90,16 @@ typedef struct s_main
 
 // cub_utils
 
-int		ft_strcmp(char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_atoi(const char *nptr);
+
+// cub_utils_2
+
 size_t	tablen(char **tab);
+void	init_player(t_main *main);
+int		ft_strcmp(char *s1, const char *s2);
 
 // checker
 
@@ -137,5 +141,20 @@ int		exec(t_main *main);
 // signal
 
 int		key_hook(int keycode, t_main *main);
+
+// render
+
+float	nor_ngl(float angle);
+void	render_ray(t_main *main, int ray);
+
+// img_gen
+
+void	img_pix_put(t_img *img, int x, int y, int color);
+int		get_color(t_main *main, int flag);
+void	draw_bg(t_main *main, int ray, int t_pix, int b_pix);
+
+// raycaster
+
+void	raycaster(t_main *main);
 
 #endif

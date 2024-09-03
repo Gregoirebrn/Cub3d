@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 02:20:07 by grebrune          #+#    #+#              #
-#    Updated: 2024/08/26 18:25:36 by grebrune         ###   ########.fr        #
+#    Updated: 2024/09/03 11:15:07 by beroy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ PARS		:=	main.c					\
 
 EXEC		:=	cub3d.c					\
 				signal.c				\
-				raycaster.c
+				raycaster.c				\
+				render.c				\
+				img_gen.c
 
 PARS_D		:=	sources/parsing/
 
