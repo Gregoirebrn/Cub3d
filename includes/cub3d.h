@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/03 15:03:17 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:14:15 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,13 @@ typedef struct s_color
 typedef struct s_texture
 {
 	char	*no;
+	t_img	no_img;
 	char	*so;
+	t_img	so_img;
 	char	*we;
+	t_img	we_img;
 	char	*ea;
+	t_img	ea_img;
 }	t_texture;
 
 typedef struct s_main

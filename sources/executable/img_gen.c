@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:14:36 by beroy             #+#    #+#             */
-/*   Updated: 2024/09/03 12:20:10 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:15:15 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 	char    *pixel;
 
 	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	//printf("pixel:%s\n", pixel);
 	*(int *)pixel = color;
 }
 
@@ -38,6 +39,16 @@ int	get_color(t_main *main, int flag)
 			return (0xFF00FFFF);
 	}
 }
+
+//int	get_tex(t_main *main, int i, int wall_h)
+//{
+//	int	t;
+//	int	r;
+//	int	g;
+//	int	b;
+//
+//	mlx
+//}
 
 void	draw_bg(t_main *main, int ray, int t_pix, int b_pix)
 {
