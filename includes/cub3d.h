@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/04 13:14:15 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:37:48 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
+# define TEX_W 1000
+# define TEX_H 1000
 # define FOV 60
 # define TILE 30
 # define MOVE_SPEED 2
