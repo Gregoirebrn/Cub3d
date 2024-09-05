@@ -6,7 +6,7 @@
 /*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 21:55:40 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/27 17:58:22 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/09/05 14:19:13 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,24 @@ int	check_xpm(char *gnl)
 	return (0);
 }
 
+char	*strdup_no_nl(const char *s)
+{
+	char	*dest;
+	int		i;
+
+	dest = ft_calloc(sizeof(char), (ft_strlen((char *)s) + 1));
+	if (dest == NULL)
+		return (dest);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+	{
+		dest[i] = s[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
 int	path_text(char *gnl, char **fill)
 {
 	int	i;
@@ -35,7 +53,7 @@ int	path_text(char *gnl, char **fill)
 	{
 		if (gnl[i] != ' ' && gnl[i] != '\n')
 		{
-			*fill = ft_strdup(&gnl[i]);
+			*fill = strdup_no_nl(&gnl[i]);
 			if (!*fill)
 				return (error("Error\nCrash of Malloc.\n"), 2);
 			if (check_xpm(gnl))

@@ -89,11 +89,11 @@ int	getter(t_main *main)
 	return (0);
 }
 
+//	printf("no=%s-\nea=%s-\nso=%s-\nwe=%s-\n",main->texture->no,
+//	main->texture->ea, main->texture->so, main->texture->we);
 //		printf("%s", gnl);
 //	printf("-r%d-g%d-b%d-\n", main->floor->r,
 //	main->floor->g, main->floor->b);
 //	printf("-r%d-g%d-b%d-\n", main->ceiling->r,
 //	main->ceiling->g, main->ceiling->b);
-//	printf("-no=%s-ea=%s-so=%s-we=%s",main->texture->no
-//	, main->texture->ea, main->texture->so, main->texture->we);
 //	printf("-----------------------------\n");
