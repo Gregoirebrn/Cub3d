@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:57:40 by beroy             #+#    #+#             */
-/*   Updated: 2024/09/03 13:48:22 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/05 14:34:55 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,30 @@ float	nor_ngl(float angle)
 	}
 	return (angle);
 }
+//
+//void	draw_wall(t_main *main, int ray, int t_pix, int b_pix)
+//{
+//	int	color;
+//	int	i;
+//
+//	color = get_color(main, main->ray->flag);
+//	i = t_pix;
+//	while (i < b_pix)
+//	{
+//		img_pix_put(&main->img, ray, i, color);
+//		i++;
+//	}
+//}
 
 void	draw_wall(t_main *main, int ray, int t_pix, int b_pix)
 {
 	int	color;
 	int	i;
 
-	color = get_color(main, main->ray->flag);
 	i = t_pix;
 	while (i < b_pix)
 	{
+		color = get_tex(main, wall_or(main), i - t_pix, b_pix - t_pix);
 		img_pix_put(&main->img, ray, i, color);
 		i++;
 	}

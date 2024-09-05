@@ -6,7 +6,7 @@
 #    By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 02:20:07 by grebrune          #+#    #+#              #
-#    Updated: 2024/09/03 14:23:27 by beroy            ###   ########.fr        #
+#    Updated: 2024/09/05 16:20:37 by beroy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ EXEC		:=	cub3d.c					\
 				raycaster.c				\
 				render.c				\
 				img_gen.c				\
-				move.c
+				move.c					\
+				texture.c
 
 PARS_D		:=	sources/parsing/
 
@@ -48,7 +49,7 @@ HEAD		:=	cub3d.h
 
 GET			:=	$(HEAD_D)get_next_line.h
 
-CFLAGS		:=	-Wall -Wextra -Werror
+CFLAGS		:=	-Wall -Wextra -Werror -O3
 
 BIN			:=	cub3D
 

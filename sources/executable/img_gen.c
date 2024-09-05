@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:14:36 by beroy             #+#    #+#             */
-/*   Updated: 2024/09/04 15:51:02 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/05 12:44:31 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,6 @@ int	get_color(t_main *main, int flag)
 		else
 			return (0xFF00FFFF);
 	}
-}
-
-int	get_tex(t_main *main, int i, int wall_h)
-{
-	int	x;
-	int	y;
-
-	// tile - (distance x ou y % tile) / TEX_W
-	x = main->ray->distance;
-	// TEX_H / wall_h
 }
 
 int	rgb_to_hex(t_color *color)

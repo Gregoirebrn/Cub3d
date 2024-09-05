@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:58:32 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/04 14:37:59 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/05 15:05:40 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	load_tex(t_main *main, t_img *img, char *tex)
 {
 	img->mlx_img = mlx_new_image(main->mlx, TEX_W, TEX_H);
-	mlx_xpm_file_to_image(main->mlx, tex, 0, 0);
+	img->mlx_img = mlx_xpm_file_to_image(main->mlx, tex, &img->width, &img->height);
+	if (img->mlx_img == NULL)
+		return (1);
 	img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp, &img->line_len, &img->endian);
 	if (img->addr == NULL)
 		return (1);

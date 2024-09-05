@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/04 13:37:48 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/05 15:41:55 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define TEX_W 1000
-# define TEX_H 1000
+# define TEX_W 1080
+# define TEX_H 1080
 # define FOV 60
 # define TILE 30
 # define MOVE_SPEED 2
@@ -54,6 +54,8 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
+	int		width;
+	int		height;
 }	t_img;
 
 typedef struct s_color
@@ -172,5 +174,12 @@ void	move_b(t_main *main);
 void	move_l(t_main *main);
 void	move_r(t_main *main);
 void	rotate(t_main *main, int sign);
+
+// texture
+
+int		tex_color(t_img *tex, int y, int x);
+t_img	*wall_or(t_main *main);
+char	**get_pix_addr(t_img *img, int x, int y);
+int		get_tex(t_main *main, t_img *img, int i, int wall_h);
 
 #endif

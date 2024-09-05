@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setter_getter.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:36:17 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/27 17:33:46 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/09/05 15:04:03 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,28 @@ void	init_color(t_main *main)
 	}
 }
 
+void	fix_address(t_texture *tex)
+{
+	int	i;
+
+	 i = 0;
+	 while (tex->no[i])
+		 i++;
+	 tex->no[i - 1] = 0;
+	i = 0;
+	while (tex->so[i])
+		i++;
+	tex->so[i - 1] = 0;
+	i = 0;
+	while (tex->ea[i])
+		i++;
+	tex->ea[i - 1] = 0;
+	i = 0;
+	while (tex->we[i])
+		i++;
+	tex->we[i - 1] = 0;
+}
+
 int	getter(t_main *main)
 {
 	char	*gnl;
@@ -95,6 +117,7 @@ int	getter(t_main *main)
 		(main->ceiling->b > 255 || main->ceiling->g > 255 || main->ceiling->r > 255))
 		return (error("Error\nA color was not found.\n"), 3);
 //	printf("-----------------------------\n");
+	fix_address(main->texture);
 	return (0);
 }
 
