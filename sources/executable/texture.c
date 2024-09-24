@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 12:44:34 by beroy             #+#    #+#             */
-/*   Updated: 2024/09/05 16:18:41 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/24 17:38:09 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,14 @@ int	get_abs_pos(t_main *main, char c)
 	return (pos);
 }
 
-int	get_tex(t_main *main, t_img *img, int i, int wall_h)
+int	get_tex(t_main *main, t_img *img, int i, double wall_h)
 {
 	int	x;
 	int	y;
 	int	pixel;
 
+	if (wall_h > HEIGHT)
+		i += (wall_h - HEIGHT) * 0.5;
 	if (main->ray->flag == 1)
 		x = (get_abs_pos(main, 'x') % TILE) * img->width / TILE;
 	else

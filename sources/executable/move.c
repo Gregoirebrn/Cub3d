@@ -14,32 +14,32 @@
 
 void	move_f(t_main *main)
 {
-	main->plyr->p_x += round(cos(main->plyr->angle) * MOVE_SPEED);
-	main->plyr->p_y += round(sin(main->plyr->angle) * MOVE_SPEED);
+	main->plyr->p_x += cos(main->plyr->angle) * MOVE_SPEED;
+	main->plyr->p_y += sin(main->plyr->angle) * MOVE_SPEED;
 	raycaster(main);
 	mlx_put_image_to_window(main->mlx, main->win, main->img.mlx_img, 0, 0);
 }
 
 void	move_b(t_main *main)
 {
-	main->plyr->p_x -= round(cos(main->plyr->angle) * MOVE_SPEED);
-	main->plyr->p_y -= round(sin(main->plyr->angle) * MOVE_SPEED);
+	main->plyr->p_x -= cos(main->plyr->angle) * MOVE_SPEED;
+	main->plyr->p_y -= sin(main->plyr->angle) * MOVE_SPEED;
 	raycaster(main);
 	mlx_put_image_to_window(main->mlx, main->win, main->img.mlx_img, 0, 0);
 }
 
 void	move_l(t_main *main)
 {
-	main->plyr->p_x += round(sin(main->plyr->angle) * MOVE_SPEED);
-	main->plyr->p_y -= round(cos(main->plyr->angle) * MOVE_SPEED);
+	main->plyr->p_x += sin(main->plyr->angle) * MOVE_SPEED;
+	main->plyr->p_y -= cos(main->plyr->angle) * MOVE_SPEED;
 	raycaster(main);
 	mlx_put_image_to_window(main->mlx, main->win, main->img.mlx_img, 0, 0);
 }
 
 void	move_r(t_main *main)
 {
-	main->plyr->p_x -= round(sin(main->plyr->angle) * MOVE_SPEED);
-	main->plyr->p_y += round(cos(main->plyr->angle) * MOVE_SPEED);
+	main->plyr->p_x -= sin(main->plyr->angle) * MOVE_SPEED;
+	main->plyr->p_y += cos(main->plyr->angle) * MOVE_SPEED;
 	raycaster(main);
 	mlx_put_image_to_window(main->mlx, main->win, main->img.mlx_img, 0, 0);
 }
