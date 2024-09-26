@@ -14,11 +14,11 @@
 
 float	nor_ngl(float angle)
 {
-	while (angle < 0 || angle > 2 * M_PI)
+	while (angle < 0 || angle >= 2 * M_PI)
 	{
 		if (angle < 0)
 			angle += 2 * M_PI;
-		else if (angle > 2 * M_PI)
+		else if (angle >= 2 * M_PI)
 			angle -= 2 * M_PI;
 	}
 	return (angle);

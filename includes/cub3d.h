@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/24 17:50:45 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/26 17:48:33 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@
 # define TEX_H 540
 # define FOV 60
 # define TILE 30
-# define MOVE_SPEED 2
+# define MOVE_SPEED 4
 # define ROT_SPEED 3
 
 typedef struct s_plyr
 {
-	int		p_x;
-	int		p_y;
+	double	p_x;
+	double	p_y;
 	double	angle;
 	float	fov_rd;
 	int		rot;

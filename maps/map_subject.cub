@@ -1,10 +1,10 @@
 NO ./xpm_files/north.xpm
-SO ./xpm_files/south.xpm
+SO ./xpm_files/north.xpm
 C 131,  217  ,254
-EA ./xpm_files/east.xpm
+EA ./xpm_files/west.xpm
 
 F      200,200, 200
-WE ./xpm_files/west.xpm
+WE ./xpm_files/east.xpm
 
         1111111111111111111111111
         1000000000110000000000001
