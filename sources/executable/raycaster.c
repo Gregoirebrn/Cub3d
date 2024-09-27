@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:34:46 by beroy             #+#    #+#             */
-/*   Updated: 2024/09/26 17:31:52 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/27 14:01:39 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,10 @@ void	raycaster(t_main *main)
 	main->ray->ray_ngl = main->plyr->angle - (main->plyr->fov_rd / 2);
 	while (i < WIDTH)
 	{
+		if (main->ray->ray_ngl >= 2 * M_PI)
+			main->ray->ray_ngl -= 2 * M_PI;
+		else if (main->ray->ray_ngl < 0)
+			main->ray->ray_ngl += 2 * M_PI;
 		main->ray->flag = 0;
 		h_inter = get_h_inter(main, main->ray->ray_ngl);
 		v_inter = get_v_inter(main, main->ray->ray_ngl);

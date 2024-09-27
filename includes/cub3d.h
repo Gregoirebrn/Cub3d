@@ -22,8 +22,8 @@
 
 # define WIDTH 960
 # define HEIGHT 540
-# define TEX_W 540
-# define TEX_H 540
+# define TEX_W 60
+# define TEX_H 60
 # define FOV 60
 # define TILE 30
 # define MOVE_SPEED 4

@@ -51,6 +51,7 @@ void	rotate(t_main *main, int sign)
 		main->plyr->angle -= 2 * M_PI;
 	else if (main->plyr->angle < 0)
 		main->plyr->angle += 2 * M_PI;
+	printf("%f\n", main->plyr->angle);
 	raycaster(main);
 	mlx_put_image_to_window(main->mlx, main->win, main->img.mlx_img, 0, 0);
 }
