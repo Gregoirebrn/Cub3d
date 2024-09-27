@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/26 17:48:33 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/27 14:20:14 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,9 @@ void	draw_bg(t_main *main, int ray, int t_pix, int b_pix);
 
 // raycaster
 
+int		wall_hit(float x, float y, t_main *main);
+double	get_h_inter(t_main *main, float angle);
+double	get_v_inter(t_main *main, float angle);
 void	raycaster(t_main *main);
 
 // move
