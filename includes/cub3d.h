@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/27 14:20:14 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/30 12:06:55 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define TILE 30
 # define MOVE_SPEED 4
 # define ROT_SPEED 3
+# define PLYR 0xFF0000FF
 
 typedef struct s_plyr
 {

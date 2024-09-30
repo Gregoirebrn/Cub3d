@@ -12,6 +12,39 @@
 
 #include "cub3d.h"
 
+int sqr_color(t_main *main, int x, int y, int pos_x, int pos_y)
+{
+	int sqr_x;
+	int sqr_y;
+
+	sqr_x = pos_x - 8 + x;
+	sqr_y = pos_y - 4 + y;
+}
+
+
+
+void	mini_map(t_main *main)
+{
+	int pos_x;
+	int pos_y;
+	int x;
+	int y;
+
+	pos_x = floor(main->plyr->p_x / TILE);
+	pos_x = floor(main->plyr->p_y / TILE);
+	y = 0;
+	while (y < 9)
+	{
+		x = 0;
+		while (x < 17)
+		{
+			draw_sqr(x, y, sqr_color(main, x, y, pos_x, pos_y));
+			x++;
+		}
+		y++;
+	}
+}
+
 float	nor_ngl(float angle)
 {
 	while (angle < 0 || angle >= 2 * M_PI)
@@ -23,20 +56,6 @@ float	nor_ngl(float angle)
 	}
 	return (angle);
 }
-//
-//void	draw_wall(t_main *main, int ray, int t_pix, int b_pix)
-//{
-//	int	color;
-//	int	i;
-//
-//	color = get_color(main, main->ray->flag);
-//	i = t_pix;
-//	while (i < b_pix)
-//	{
-//		img_pix_put(&main->img, ray, i, color);
-//		i++;
-//	}
-//}
 
 void	draw_wall(t_main *main, int ray, int t_pix, int b_pix, double wall_h)
 {
