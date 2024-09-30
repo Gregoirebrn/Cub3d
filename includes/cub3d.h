@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/30 17:15:44 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/30 18:14:33 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # define TILE 30
 # define MOVE_SPEED 4
 # define ROT_SPEED 3
-# define PLYR 0xFFFF0000
-# define WALL 0xFFFFFFFF
-# define BG 0xFF000000
+# define PLYR 0xFFFF4B1F
+# define WALL 0xFF262626
+# define BG 0xFFC9C9C9
 # define MINITILE 12
 
 typedef struct s_pos
