@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_map_getter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:22:40 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/27 15:23:04 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:17:18 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	maplen(t_main *main)
 		len++;
 	}
 	len -= 6;
-//	printf("len=%d-\n", len);
 	return (close(fd), len);
 }
 
@@ -70,54 +69,26 @@ int	get_map(t_main *main)
 	char	*gnl;
 	int		i;
 
-	if (get_map_bis(main))
-		return (1);
 	gnl = get_next_line(main->fd);
 	i = 0;
 	while (gnl)
 	{
-		if (!ft_strcmp(gnl, "\n") || only_ws(gnl))
+		if ((!ft_strcmp(gnl, "\n") || only_ws(gnl)) && i != 0)
+			return (ft_free(gnl), error("Error\nEmpty line in the map.\n"), 1);
+		if ((!ft_strcmp(gnl, "\n") || only_ws(gnl)) && i == 0)
 		{
 			ft_free(gnl);
-			if (i == 0)
-			{
-				gnl = get_next_line(main->fd);
-				continue ;
-			}
-			return (error("Error\nEmpty line in description of map.\n"), 1);
+			gnl = get_next_line(main->fd);
+			continue ;
 		}
 		main->map[i] = ft_strdup(gnl);
-//		printf("%s", main->map[i]);
 		if (!main->map[i])
 			return (ft_free(gnl), error("Error\nCrash of Malloc.\n"), 1);
 		ft_free(gnl);
 		i++;
-//	printf("i=%d-\n", i);
 		if (main->len == i)
-			break;
+			break ;
 		gnl = get_next_line(main->fd);
 	}
 	return (main->map[i] = NULL, 0);
 }
-
-//		printf("-%s", gnl);
-//		printf("-%s-", main->map[i]);
-//		printf("-%s", gnl);
-//int	get_map_extend(char *gnl, t_main *main, int i)
-//{
-//	if (!ft_strcmp(gnl, "\n"))
-//	{
-//		ft_free(gnl);
-//		if (i == 0)
-//		{
-//			gnl = get_next_line(main->fd);
-//			continue ;
-//		}
-//		return (error("Error\nEmpty line in description of map."), 1);
-//	}
-//	main->map[i] = ft_strdup(gnl);
-//	if (!main->map[i])
-//		return (ft_free(gnl), error("Error\nCrash of Malloc."), 1);
-//	ft_free(gnl);
-//	gnl = get_next_line(main->fd);
-//}

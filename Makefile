@@ -6,7 +6,7 @@
 #    By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 02:20:07 by grebrune          #+#    #+#              #
-#    Updated: 2024/09/05 16:20:37 by beroy            ###   ########.fr        #
+#    Updated: 2024/09/30 17:03:22 by beroy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,13 @@ PARS		:=	main.c					\
 EXEC		:=	cub3d.c					\
 				signal.c				\
 				raycaster.c				\
+				raycaster_utils.c		\
 				render.c				\
 				img_gen.c				\
 				move.c					\
-				texture.c
+				move_utils.c			\
+				texture.c				\
+				minimap.c
 
 PARS_D		:=	sources/parsing/
 
@@ -49,7 +52,7 @@ HEAD		:=	cub3d.h
 
 GET			:=	$(HEAD_D)get_next_line.h
 
-CFLAGS		:=	-Wall -Wextra -Werror -O3
+CFLAGS		:=	-Wall -Wextra -Werror -g3 -O3
 
 BIN			:=	cub3D
 

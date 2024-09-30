@@ -73,29 +73,3 @@ char	*get_next_line(int fd)
 		return (free(line), next_line = NULL);
 	return (read_line(fd, line, &next_line));
 }
-
-//#include <fcntl.h>
-//#include <stdio.h>
-//
-//int	main(void)
-//{
-//	int		fd;
-//	char	*line;
-//	int		i;
-//
-//	i = 0;
-//	line = NULL;
-//	fd = open("test.txt", O_RDONLY);
-//	if (fd == -1)
-//		return (0);
-//	do
-//	{
-//		if (line)
-//			free(line);
-//		line = get_next_line(fd);
-//		printf("[%d]>>>>%s", i, line);
-//		i++;
-//	}while (line);
-//	close(fd);
-//	return (0);
-//}

@@ -86,14 +86,3 @@ void	move_r(t_main *main)
 	raycaster(main);
 	mlx_put_image_to_window(main->mlx, main->win, main->img.mlx_img, 0, 0);
 }
-
-void	rotate(t_main *main, int sign)
-{
-	main->plyr->angle += (M_PI / 180) * sign * ROT_SPEED;
-	if (main->plyr->angle >= 2 * M_PI)
-		main->plyr->angle -= 2 * M_PI;
-	else if (main->plyr->angle < 0)
-		main->plyr->angle += 2 * M_PI;
-	raycaster(main);
-	mlx_put_image_to_window(main->mlx, main->win, main->img.mlx_img, 0, 0);
-}

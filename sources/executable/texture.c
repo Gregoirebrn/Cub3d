@@ -6,16 +6,16 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 12:44:34 by beroy             #+#    #+#             */
-/*   Updated: 2024/09/27 13:41:03 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/30 17:11:56 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int    tex_color(t_img *tex, int y, int x)
+int	tex_color(t_img *tex, int y, int x)
 {
 	if (x >= 0 && x < tex->width && y >= 0 && y < tex->height)
-		return (*(int *) (tex->addr + (tex->line_len * y) + (x * tex->bpp / 8)));
+		return (*(int *)(tex->addr + (tex->line_len * y) + (x * tex->bpp / 8)));
 	return (0x0);
 }
 
@@ -37,19 +37,9 @@ t_img	*wall_or(t_main *main)
 	}
 }
 
-char	**get_pix_addr(t_img *img, int x, int y)
+double	abs_pos(t_main *main, char c)
 {
-	char    **addr;
-	char	*pixel;
-
-	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	addr = &pixel;
-	return (addr);
-}
-
-double	get_abs_pos(t_main *main, char c)
-{
-	double pos;
+	double	pos;
 
 	if (c == 'x')
 		pos = main->plyr->p_x + cos(main->ray->ray_ngl) * main->ray->distance;
@@ -67,9 +57,9 @@ int	get_tex(t_main *main, t_img *img, int i, double wall_h)
 	if (wall_h > HEIGHT)
 		i += (wall_h - HEIGHT) * 0.5;
 	if (main->ray->flag == 1)
-		x = (int)fmodf(get_abs_pos(main, 'x') * (img->width / TILE), img->width);
+		x = (int)fmodf(main->ray->p_x * (img->width / TILE), img->width);
 	else
-		x = (int)fmodf(get_abs_pos(main, 'y') * (img->width / TILE), img->width);
+		x = (int)fmodf(main->ray->p_y * (img->width / TILE), img->width);
 	y = i * img->height / wall_h;
 	pixel = tex_color(img, (int)round(y), (int)round(x));
 	return (pixel);

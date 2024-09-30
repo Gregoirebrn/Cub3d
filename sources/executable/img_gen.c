@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:14:36 by beroy             #+#    #+#             */
-/*   Updated: 2024/09/05 12:44:31 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/30 17:08:25 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,10 @@
 
 void	img_pix_put(t_img *img, int x, int y, int color)
 {
-	char    *pixel;
+	char	*pixel;
 
 	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
 	*(int *)pixel = color;
-}
-
-int	get_color(t_main *main, int flag)
-{
-	main->ray->ray_ngl = nor_ngl(main->ray->ray_ngl);
-	if (flag == 0)
-	{
-		if (main->ray->ray_ngl > M_PI_2 && main->ray->ray_ngl < 3 * M_PI_2)
-			return (0xFF0000FF);
-		else
-			return (0xFF00FF00);
-	}
-	else
-	{
-		if (main->ray->ray_ngl > 0 && main->ray->ray_ngl < M_PI)
-			return (0xFFFF0000);
-		else
-			return (0xFF00FFFF);
-	}
 }
 
 int	rgb_to_hex(t_color *color)
@@ -46,7 +27,7 @@ int	rgb_to_hex(t_color *color)
 
 void	draw_bg(t_main *main, int ray, int t_pix, int b_pix)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < t_pix)

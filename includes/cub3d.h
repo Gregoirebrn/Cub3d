@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/30 12:06:55 by beroy            ###   ########.fr       */
+/*   Updated: 2024/09/30 17:15:44 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,20 @@
 
 # define WIDTH 960
 # define HEIGHT 540
-# define TEX_W 60
-# define TEX_H 60
 # define FOV 60
 # define TILE 30
 # define MOVE_SPEED 4
 # define ROT_SPEED 3
-# define PLYR 0xFF0000FF
+# define PLYR 0xFFFF0000
+# define WALL 0xFFFFFFFF
+# define BG 0xFF000000
+# define MINITILE 12
+
+typedef struct s_pos
+{
+	int	pos_x;
+	int	pos_y;
+}	t_pos;
 
 typedef struct s_plyr
 {
@@ -36,9 +43,6 @@ typedef struct s_plyr
 	double	p_y;
 	double	angle;
 	float	fov_rd;
-	int		rot;
-	int		l_r;
-	int		u_d;
 }	t_plyr;
 
 typedef struct s_ray //the ray structure
@@ -46,6 +50,12 @@ typedef struct s_ray //the ray structure
 	double	ray_ngl;
 	double	distance;
 	int		flag;
+	double	p_x;
+	double	p_y;
+	double	h_x;
+	double 	h_y;
+	double	v_x;
+	double 	v_y;
 }	t_ray;
 
 typedef struct s_img
@@ -99,6 +109,10 @@ typedef struct s_main
 	t_texture	*texture;
 }	t_main;
 
+// cub_map_getter
+
+int		get_map_bis(t_main *main);
+
 // cub_utils
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -111,6 +125,8 @@ int		ft_atoi(const char *nptr);
 size_t	tablen(char **tab);
 void	init_player(t_main *main);
 int		ft_strcmp(char *s1, const char *s2);
+int		getter_end(t_main *main);
+void	fix_address(t_texture *tex);
 
 // checker
 
@@ -158,6 +174,10 @@ int		key_hook(int keycode, t_main *main);
 float	nor_ngl(float angle);
 void	render_ray(t_main *main, int ray);
 
+// minimap
+
+void	mini_map(t_main *main);
+
 // img_gen
 
 void	img_pix_put(t_img *img, int x, int y, int color);
@@ -171,6 +191,10 @@ double	get_h_inter(t_main *main, float angle);
 double	get_v_inter(t_main *main, float angle);
 void	raycaster(t_main *main);
 
+// raycaster_utils
+
+int		unit_circle(float angle, char c);
+void	ray_hit_pos(t_main *main, int flag);
 // move
 
 void	move_f(t_main *main);

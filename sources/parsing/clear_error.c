@@ -1,13 +1,12 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   clear_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:52:45 by grebrune          #+#    #+#             */
-/*   Updated: 2024/08/27 15:24:08 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:25:04 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +57,15 @@ void	free_all(t_main *main)
 
 int	close_win(t_main *main)
 {
+	mlx_loop_end(main->mlx);
+	mlx_destroy_image(main->mlx, main->texture->ea_img.mlx_img);
+	mlx_destroy_image(main->mlx, main->texture->we_img.mlx_img);
+	mlx_destroy_image(main->mlx, main->texture->so_img.mlx_img);
+	mlx_destroy_image(main->mlx, main->texture->no_img.mlx_img);
+	mlx_destroy_image(main->mlx, main->img.mlx_img);
 	mlx_destroy_window(main->mlx, main->win);
 	mlx_destroy_display(main->mlx);
 	ft_free(main->mlx);
 	free_all(main);
-//	(void)main;
 	return (0);
 }

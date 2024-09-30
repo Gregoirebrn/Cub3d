@@ -53,8 +53,7 @@ int	check_color(char *gnl, t_color *fill)
 	filled = 0;
 	i = 0;
 	if (check_line(gnl))
-		return (error("Error\nWrong format for color X r,g,b in rang [0,255].\n"), 1);
-//	printf("-r%d-g%d-b%d-\n", fill->r, fill->g, fill->b);
+		return (error("Error\nWrong format for colors.\n"), 1);
 	if (fill->r != 256 || fill->g != 256 || fill->b != 256)
 		return (error("Error\nDouble declaration of a color.\n"), 2);
 	while (gnl && gnl[i])
