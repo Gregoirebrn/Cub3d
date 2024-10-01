@@ -15,10 +15,7 @@
 int	key_hook(int keycode, t_main *main)
 {
 	if (keycode == 65307)
-	{
-		error("Error\nexit code echap.\n");
 		close_win(main);
-	}
 	if (keycode == 119 || keycode == 65362)
 		move_f(main);
 	if (keycode == 115 || keycode == 65364)

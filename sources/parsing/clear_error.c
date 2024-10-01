@@ -35,6 +35,7 @@ void	free_all(t_main *main)
 
 	if (!main)
 		return ;
+	close(main->fd);
 	if (main->texture)
 	{
 		ft_free(main->texture->so);

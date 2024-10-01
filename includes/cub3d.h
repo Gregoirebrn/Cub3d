@@ -20,8 +20,8 @@
 # include <math.h>
 # include "get_next_line.h"
 
-# define WIDTH 960
-# define HEIGHT 540
+# define WIDTH 1600
+# define HEIGHT 900
 # define FOV 60
 # define TILE 30
 # define MOVE_SPEED 4
