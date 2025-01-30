@@ -36,12 +36,4 @@ Raycasting is a rendering technique used in early 3D games to create a pseudo-3D
 3. **Calculate Distance**: Use the distance between the player and the wall to determine the height of the wall slice.
 4. **Render Scene**: Draw vertical slices of walls based on calculated distances, creating a 3D illusion.
 
-## Video Preview
-*(Add a gameplay video or GIF here)*
-
-## Authors
-- Your Name (@yourgithub)
-
-## License
-This project is licensed under the MIT License.
 
