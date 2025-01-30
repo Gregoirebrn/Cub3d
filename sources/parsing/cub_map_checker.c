@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_map_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:22:36 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/03 14:13:17 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:36:40 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	map_item(char c)
 
 int	check_player(char **map, size_t x, size_t y)
 {
-	if ((x == 0 || map_item(map[y][x - 1])) || \
+	if ((x == 0 || map_item(map[y][x - 1])) ||
 		(y == 0 || map_item(map[y - 1][x])))
 		return (1);
-	if ((ft_strlen(map[y]) < x || map_item(map[y][x + 1])) || \
+	if ((ft_strlen(map[y]) < x || map_item(map[y][x + 1])) ||
 		(tablen(map) == y + 1 || map_item(map[y + 1][x])))
 		return (2);
 	return (0);
@@ -88,15 +88,13 @@ int	check_map(char **map, t_main *main)
 				return (1);
 			x++;
 		}
+		if ((int)x > main->map_w)
+			main->map_w = (int)x;
 		y++;
 	}
+	main->map_h = (int)y;
 	if (main->direction != 'N' && main->direction != 'E' && \
 		main->direction != 'S' && main->direction != 'W')
 		return (error("Error\nNone direction found in the map.\n"), 3);
 	return (0);
 }
-
-//		printf("-dir%d-pos_x%zu-pos_y%zu\n",
-//		main->direction, main->pos_x, main->pos_y);
-//			printf("max size str %zu-\n", ft_strlen(map[y]));
-//			printf("----y=%zu---x=%zu-----\n", y, x);

@@ -1,6 +1,0 @@
-$> ../cub3D ./assets/maps_test/b_really_big_map.cub             ???????
-(0) ✗ Bad
--------------------------------------------------------
-$> ../cub3D ./assets/maps_test/b_textures_forbidden.cub
-(0) ✗ Bad
--------------------------------------------------------          ?????????

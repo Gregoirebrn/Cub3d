@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 02:20:07 by grebrune          #+#    #+#              #
-#    Updated: 2024/08/26 18:25:36 by grebrune         ###   ########.fr        #
+#    Updated: 2025/01/30 16:10:30 by grebrune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,18 @@ PARS		:=	main.c					\
 				cub_texture.c			\
 				get_next_line.c			\
 				get_next_line_utils.c	\
-				setter_getter.c			\
+				setter_getter.c
 
 EXEC		:=	cub3d.c					\
 				signal.c				\
+				raycaster.c				\
+				raycaster_utils.c		\
+				render.c				\
+				img_gen.c				\
+				move.c					\
+				move_utils.c			\
+				texture.c				\
+				minimap.c
 
 PARS_D		:=	sources/parsing/
 
@@ -44,7 +52,7 @@ HEAD		:=	cub3d.h
 
 GET			:=	$(HEAD_D)get_next_line.h
 
-CFLAGS		:=	-Wall -Wextra -Werror
+CFLAGS		:=	-Wall -Wextra -Werror -O3 -ggdb
 
 BIN			:=	cub3D
 

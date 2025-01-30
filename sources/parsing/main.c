@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:19 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/03 14:30:23 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/10/01 12:54:27 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	check_macro(void)
+{
+	if (MINITILE > WIDTH / 34)
+		return (1);
+	if (MINITILE > HEIGHT / 18)
+		return (1);
+	if (FOV < 40 || FOV > 120)
+		return (1);
+	if (TILE < 1 || TILE > 60)
+		return (1);
+	return (0);
+}
 
 int	malloc_main(t_main *main)
 {
@@ -23,6 +36,12 @@ int	malloc_main(t_main *main)
 	main->ceiling = ft_calloc(sizeof (t_color), 1);
 	if (!main->ceiling)
 		return (error("Error\nCrash of Malloc.\n"), 1);
+	main->ray = ft_calloc(sizeof (t_ray), 1);
+	if (!main->ray)
+		return (error("Error\nCrash of Malloc.\n"), 1);
+	main->plyr = ft_calloc(sizeof (t_plyr), 1);
+	if (!main->plyr)
+		return (error("Error\nCrash of Malloc.\n"), 1);
 	return (0);
 }
 
@@ -32,6 +51,8 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (error("Error\nWrong number of parameter.\n"), -1);
+	if (check_macro())
+		return (error("Error\nWrong macro parameters.\n"), -1);
 	main = ft_calloc(sizeof(t_main), 1);
 	if (!main)
 		return (error("Error\nCrash of Malloc.\n"), -1);
@@ -47,8 +68,8 @@ int	main(int ac, char **av)
 		return (free_all(main), -4);
 	if (check_map(main->map, main))
 		return (free_all(main), -5);
-	return (free_all(main), 0);
+	init_player(main);
+	if (exec(main))
+		return (free_all(main), -6);
+	return (close_win(main), 0);
 }
-//	if (exec(main))
-//		return (free_all(main), -6);
-//	return (close_win(main), 0);

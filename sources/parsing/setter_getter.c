@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setter_getter.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:36:17 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/03 14:03:23 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:28:40 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,5 @@ int	getter(t_main *main)
 	}
 	if (getter_end(main))
 		return (2);
-	return (0);
+	return (fix_address(main->texture), 0);
 }
-
-//	printf("no=%s-\nea=%s-\nso=%s-\nwe=%s-\n",main->texture->no,
-//	main->texture->ea, main->texture->so, main->texture->we);
-//		printf("%s", gnl);
-//	printf("-r%d-g%d-b%d-\n", main->floor->r,
-//	main->floor->g, main->floor->b);
-//	printf("-r%d-g%d-b%d-\n", main->ceiling->r,
-//	main->ceiling->g, main->ceiling->b);
-//	printf("-----------------------------\n");

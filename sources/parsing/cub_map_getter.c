@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_map_getter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebrune <grebrune@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:22:40 by grebrune          #+#    #+#             */
-/*   Updated: 2024/09/03 14:29:42 by grebrune         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:17:18 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,3 @@ int	get_map(t_main *main)
 	}
 	return (main->map[i] = NULL, 0);
 }
-
-//		printf("-%s", gnl);
-//		printf("-%s-", main->map[i]);
-//		printf("-%s", gnl);
-//	printf("i=%d-\n", i);
-//		printf("%s", main->map[i]);
-//	printf("len=%d-\n", len);
