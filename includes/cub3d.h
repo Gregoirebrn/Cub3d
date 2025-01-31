@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 13:21:28 by grebrune          #+#    #+#             */
-/*   Updated: 2024/10/01 12:54:27 by beroy            ###   ########.fr       */
+/*   Updated: 2025/01/31 16:44:15 by grebrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 # include <math.h>
 # include "get_next_line.h"
 
-//Full HD
-# define WIDTH 2560
-# define HEIGHT 1440
+//4K
+# define WIDTH 3840
+# define HEIGHT 2160
 
-//Full HD
-//# define WIDTH 1920
-//# define HEIGHT 1080
+//QHD
+//# define WIDTH 2560
+//# define HEIGHT 1440
 
 //Full HD
 //# define WIDTH 1920
@@ -35,7 +35,8 @@
 # define FOV 60
 # define TILE 30
 # define MOVE_SPEED 3
-# define ROT_SPEED 2
+# define ROT_SPEED 3
+# define SENSITIVITY 0.9
 # define PLYR 0xFFFF4B1F
 # define WALL 0xFF262626
 # define BG 0xFFC9C9C9
@@ -191,6 +192,7 @@ int		exec(t_main *main);
 int		key_release(int keycode, t_main *main);
 int		key_press(int keycode, t_main *main);
 void	handle_movement(t_main *main);
+int		mouse_move(int x, int y, t_main *main);
 void	init_key(t_main *main);
 
 // render
@@ -226,6 +228,7 @@ void	move_b(t_main *main);
 void	move_l(t_main *main);
 void	move_r(t_main *main);
 void	rotate(t_main *main, int sign);
+void	mouse_rotate(t_main *main, int sign);
 
 // texture
 

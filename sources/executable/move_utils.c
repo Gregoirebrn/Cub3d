@@ -22,3 +22,14 @@ void	rotate(t_main *main, int sign)
 	if (main->plyr->angle < 0)
 		main->plyr->angle += two_pi;
 }
+
+void	mouse_rotate(t_main *main, int sign)
+{
+	static const double	rotation_step = (M_PI / 180) * SENSITIVITY;
+	static const double	two_pi = 2 * M_PI;
+
+	main->plyr->angle += sign * rotation_step;
+	main->plyr->angle = fmod(main->plyr->angle, two_pi);
+	if (main->plyr->angle < 0)
+		main->plyr->angle += two_pi;
+}

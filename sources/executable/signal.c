@@ -64,6 +64,23 @@ int	key_press(int keycode, t_main *main)
 	return (0);
 }
 
+int	mouse_move(int x, int y, t_main *main)
+{
+	static int	last_x = WIDTH / 2;
+
+	(void)y;
+	if (x > last_x)
+		mouse_rotate(main, 1);
+	else if (x < last_x)
+		mouse_rotate(main, -1);
+	last_x = x;
+	if (x == WIDTH - 1)
+		mouse_rotate(main, 1);
+	if (x == 0)
+		mouse_rotate(main, -1);
+	return (0);
+}
+
 void	init_key(t_main *main)
 {
 	int	i;

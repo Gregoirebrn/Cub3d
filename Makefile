@@ -6,7 +6,7 @@
 #    By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 02:20:07 by grebrune          #+#    #+#              #
-#    Updated: 2025/01/30 16:10:30 by grebrune         ###   ########.fr        #
+#    Updated: 2025/01/31 14:18:59 by grebrune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,8 @@ CFLAGS		:=	-Wall -Wextra -Werror -O3 -ggdb
 
 BIN			:=	cub3D
 
+RUN			=	$(shell ./cub3D maps/subject.cub)
+
 ########################################################################################################################
 #                                                         MLX                                                          #
 ########################################################################################################################
@@ -75,10 +77,15 @@ MLX_A		:=	$(addprefix $(MLX_D), $(MLX))
 ########################################################################################################################
 
 all			:	lib
-				$(MAKE) $(BIN)
+				@echo "Compiling ..."
+				@$(MAKE) --silent $(BIN)
+				@echo "Success !"
+
+run			:	all
+				$(RUN)
 
 lib			:
-				$(MAKE) -C $(MLX_D)
+				@$(MAKE) --silent -C $(MLX_D) 2>/dev/null
 
 $(BIN)		:	$(OBJS_D) $(OBJS) $(MLX_A) Makefile
 				$(CC) $(CFLAGS) -o $(BIN) $(OBJS) $(MLX_A) $(MLX_F)
@@ -97,14 +104,16 @@ $(OBJS_D)	:
 ########################################################################################################################
 
 clean		:
-				$(RM) -r $(OBJS) $(OBJS_D)
-				$(MAKE) clean -C mlx_linux
+				@echo "Remove all .o."
+				@$(RM) -r $(OBJS) $(OBJS_D)
+				@$(MAKE) clean --silent -C mlx_linux
 
 fclean		:	clean
-				$(RM) $(BIN)
-				$(MAKE) clean -C mlx_linux
+				@echo "Remove all binary."
+				@$(RM) $(BIN)
+				@$(MAKE) clean --silent -C mlx_linux
 
 
 re			:	fclean all
 
-.PHONY: all clean fclean re lib
+.PHONY: all clean fclean re lib run

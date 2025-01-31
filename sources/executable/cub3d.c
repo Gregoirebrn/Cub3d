@@ -78,6 +78,8 @@ int	exec(t_main *main)
 			&main->img.line_len, &main->img.endian);
 	raycaster(main);
 	mlx_put_image_to_window(main->mlx, main->win, main->img.mlx_img, 0, 0);
+	mlx_mouse_hide(main->mlx, main->win);
+	mlx_hook(main->win, 6, 1L << 6, mouse_move, main);
 	mlx_hook(main->win, 2, 1L << 0, key_press, main);
 	mlx_hook(main->win, 3, 1L << 1, key_release, main);
 	mlx_hook(main->win, 17, 0, close_win, main);
